@@ -1,0 +1,1 @@
+AltIO.decl AltIOMaxc2.decl AltIO.bcpl AltIOInit.bcpl AltIOCommand.bcpl AltIODisplay.bcpl AltIOMaxc2.bcpl AltIOPup.bcpl AltIOImp.decl AltIOImp.bcpl AltIOImpInit.bcpl AltIOUtilb.bcpl AltIOUtila.asm KBoot.asm CompileAltIO.cm LoadAltIO.cm AltIO.cm

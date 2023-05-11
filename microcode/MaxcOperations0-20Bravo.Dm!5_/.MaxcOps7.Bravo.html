@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-20Bravo.Dm!5>MaxcOps7.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 14<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Stopping Tenex</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Stopping Tenex</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">2.</span><span class="tab" val="24"></span><span style="font: 10pt serif">Manually run the Micro-Exec memory test (so that Tenex will be informed of solidly failing regions of memory that it shouldn&rsquo;t use):</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*</span><span style="font: 10pt serif; text-decoration: underline">Test.Memory.Fast &lt;cr&gt;</span><span style="font: 10pt serif">     (T M F)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">3.</span><span class="tab" val="24"></span><span style="font: 10pt serif">Read in Tenex without starting it:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*</span><span style="font: 10pt serif; text-decoration: underline">Read.Tenex.From.Area 0 &lt;cr&gt;</span><span style="font: 10pt serif">     (R T F A 0)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">4.</span><span class="tab" val="24"></span><span style="font: 10pt serif">Enter Exec DDT, turn on the "Checkdsk bypass" switch, and start Tenex:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*</span><span style="font: 10pt serif; text-decoration: underline">EDDT &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">EDDT<br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">CHKBYP/</span><span style="font: 10pt serif">  0    </span><span style="font: 10pt serif; text-decoration: underline">1 &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">SYSGO1&lt;esc&gt;G</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: center">
+<span style="font: bold 10pt serif">7.  STOPPING TENEX</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">In order to give users adequate notice and to protect files on disk, Tenex should ordinarily be stopped in the following manner.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">As long as possible before the scheduled downtime (preferably 24 hours or more), notify users by (optionally) putting a notice in the login message, setting the system downtime cell, and recording a telephone message.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">A.</span><span class="tab" val="24"></span><span style="font: 10pt serif">To put a notice in the login message,</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span style="font: 10pt serif"> login as yourself and:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">@</span><span style="font: 10pt serif; text-decoration: underline">SNDMSG &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">To: </span><span style="font: 10pt serif; text-decoration: underline">SYSTEM &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">cc: </span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">Subject: </span><span style="font: 10pt serif; text-decoration: underline">Scheduled downtime &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">Message:<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">(An appropriate message giving date, time, and reason)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">&uarr;Z</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">Q,S,?,carriage-return: </span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">SYSTEM -- ok<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">@</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span style="font: 10pt serif">------------------------------<br></span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span style="font: 8pt serif">Do this only if the downtime is of unusual nature or duration.  You must be a member of the "System" group to send messages to SYSTEM.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+</div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">B.</span><span class="tab" val="24"></span><span style="font: 10pt serif">To set the system downtime cell, you must be a wheel or a maintenance person:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">@</span><span style="font: 10pt serif; text-decoration: underline">ENABLE &lt;cr&gt;</span><span style="font: 10pt serif">     (</span><span style="font: italic 10pt serif">only</span><span style="font: 10pt serif"> if you are a </span><span style="font: italic 10pt serif">wheel</span><span style="font: 10pt serif">)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">!</span><span style="font: 10pt serif; text-decoration: underline">HALT, &lt;cr&gt;</span><span style="font: 10pt serif">        (do </span><span style="font: italic 10pt serif">not</span><span style="font: 10pt serif"> omit the comma)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">[Superpassword:] </span><span style="font: 10pt serif; text-decoration: underline">GUESS &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">!!</span><span style="font: 10pt serif; text-decoration: underline">AT mm/dd/yy hh:mm &lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif">    (date&time system going down)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">!!</span><span style="font: 10pt serif; text-decoration: underline">UNTIL mm/dd/yy hh:mm &lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif">         (date&time coming back up)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">!!</span><span style="font: 10pt serif; text-decoration: underline">DUE (TO REASON) reason</span><span style="font: 10pt serif"> (type ? for list) </span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">!!</span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">!</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">C.</span><span class="tab" val="24"></span><span style="font: 10pt serif">To record a telephone message, go to the recording telephone (next to the Imp in the back room) and follow the instructions posted there.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The system will automatically start notifying users of the impending downtime beginning one hour before it is to occur.  When the zero hour arrives, all jobs will be forcibly logged out except any job logged in on the Maxc controlling terminal, new logins will be prevented, and "Shutdown Complete" will type out on the Maxc console.  If there are now no jobs logged in, Tenex will shortly hit a BUGCHK (EDDT breakpoint) at SWHLT1, at which point Tenex is properly halted.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If there is a job logged in on the Maxc controlling terminal, it will be necessary to halt Tenex manually.  To do this (for which you must be a </span><span style="font: italic 10pt serif">wheel</span><span style="font: 10pt serif">):</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">@</span><span style="font: 10pt serif; text-decoration: underline">ENABLE &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">!</span><span style="font: 10pt serif; text-decoration: underline">QUIT &lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">.</span><span style="font: 10pt serif; text-decoration: underline">H</span><span style="font: 10pt serif">alt Tenex</span><span style="font: 10pt serif; text-decoration: underline">.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Wait for the EDDT breakpoint at SWHLT1.  A message such as "$8B&gt;&gt;CHKADR BUGCHK/ SWHLT1" should be printed out.  At this point it is safe to un-protect the NVIO/AltIO console ("3301P") and return control to Midas ("M").</span><span class="tab" val="24"></span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>File [Indigo]&lt;Maxc>MSOURCES.DM!2>mxi0.bcpl</title>
+  </head>
+  <body>
+    <pre>
+//MXI0.BCPL First init for Maxc2--Loadram and start special microcodeexternal [// OS	CallSwat; StartIO// MIDAS	ElapsedTime; TimeLoadRam; HaveHardware// LOADRAM	RamImage; LoadRam; SetBLV//Defined here	InitHardware1]let InitHardware1() be[	StartIO(#20000)	RamImage!0 = #077376	//Run tasks 0, 10, 17 in Ram	let res = LoadRam(RamImage,true)	//load and boot	if res &lt; 0 then	  CallSwat("Failed to load Alto Ram--Ram or Ethernet board broken")	if res &gt; 0 then if HaveHardware then	  CallSwat("Microcode constants wrong--beware")	SetBLV(#177776)	//Setup for silent boot at finish time	ElapsedTime(lv TimeLoadRam)]</pre>
+  </body>
+</html>

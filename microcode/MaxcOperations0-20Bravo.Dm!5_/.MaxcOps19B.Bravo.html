@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-20Bravo.Dm!5>MaxcOps19B.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 405pt; margin-left: 121pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 79<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Creating and Destroying Maxc Accounts</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Creating and Destroying Maxc Accounts</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">19.7.  Destroying a Maxc Account</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Maxc directories are destroyed after either an explicit request from a Maxc directory owner (rare), after the sign out procedure that occurs when someone leaves PARC, or when we find out by some other means that a directory is dead.  Ron Weaver is notified when someone leaves PARC, and he either destroys the Maxc directory (most desirable) or converts it to files-only (less desirable but hard to avoid if there are too many still-useful files archived out of the directory).  Directories for users outside PARC may become dead, but we have no convenient method of automatic discovery.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Prior to destruction, the directory owner should delete unnecessary files and rename useful ones into the directory of a coworker.  Users are sometimes sloppy about cleaning up their directories, so the person who is going to kill the directory should, as a safety measure, delete obsolete versions of files and archive current versions as follows:</span><span class="tab" val="24"></span></div>
+<div style="width: 382pt; margin-left: 144pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!CONNECT olddirectory&lt;cr&gt;<br>!DELVER&lt;cr&gt;<br>!ARCHIVE FILE *.*;*&lt;cr&gt;<br>---prints out what is going to be archived---<br>!DELETE *.*;*&lt;cr&gt;<br>---deletes archived files, but not those about to be archived---</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Then wait for the twice-weekly archiving run to take place.  After that, all information about files will be contained in the archive directory, and you can continue with the procedures discussed below.  If the directory does not have an archive directory, this safety procedure cannot be followed.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The person who is about to destroy the directory should list </span><span style="font: italic 10pt serif">one copy of the archive directory before destruction</span><span style="font: 10pt serif">, as follows:</span><span class="tab" val="24"></span></div>
+<div style="width: 382pt; margin-left: 144pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!CONNECT olddirectory<br>!INTERROGATE *.*;*,<br>!!EVERYTHING&lt;cr&gt;<br>!!LPT&lt;cr&gt;<br>!!&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">This copy is stapled to the original directory application and filed in the CSL dead directory file.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">When a directory is destroyed, any files remaining in it will be deleted.  It is less automatic to retrieve archived files belonging to a deleted directory.  Retaining a listing of the archive directory is a new practice, so directories destroyed before 19 April 1978 can readily be accessed only by recreating the directory.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The procedure for destroying a directory involves retrieving the original directory request form from our files (Kathi Anderson), marking it as destroyed, and refiling.  For PARC directories, the form should also be considered for destroying IVY IFS directories for the person who is departing, if that is appropriate.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">To destroy a Maxc directory, proceed as follows:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">1.  Login to Maxc2, enable yourself, and connect to the &lt;ACCOUNTS&gt; directory.  Do a LD or</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif"> WHO to verify that none of the other account maintainers are possibly modifying the account information at that time.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">2.  Edit the accounting files to remove the directory being destroyed.  PROJECTLIST has to be editted for all directories, UACHK.TXT for login directories, and &lt;SYSTEM&gt;ARCHIVE-FILES-ONLY.TXT and &lt;SYSTEM&gt;ARHCIVE-FILES-ONLY-ALPHA.TXT for files-only directories.  &lt;SYSTEM&gt;SUBSYSTEMS.old-directory (if it exists) has to be archived for message-only directories.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">3.  After removing the appropriate entries from these files, destroy the directory with the following dialog:</span></div>
+<div style="width: 414pt; margin-left: 112pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!E</span><span style="font: 10pt serif; vertical-align: 4pt">c</span><span style="font: 10pt serif">CREATE olddirectory,&lt;cr&gt;   (Don&rsquo;t omit the ",")</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br> [SUPERPASSWORD] GUESS&lt;cr&gt;<br>!!KILL&lt;cr&gt;<br>!!&lt;cr&gt;<br> [CONFIRM]&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If you have a number of directories to destroy, you can delete all of them at this time, and then do the stuff below just once for all of them.</span><span class="tab" val="24"></span></div>
+<div style="width: 414pt; margin-left: 112pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!RUNFIL &lt;cr&gt; COMMANDS FROM : UACHK.RUNFIL&lt;cr&gt;<br>!E</span><span style="font: 10pt serif; vertical-align: 4pt">c</span><span style="font: 10pt serif">INITIALIZE ACCOUNTS&lt;cr&gt;<br>!</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">For each directory destroyed, a history of the directory is left in &lt;ACCOUNTS&gt;DELETED-USER-PARAMETERS.directoryname(directorynumber), and if it has any archived files, the archive directory is moved to &lt;ACCOUNTS&gt;DELETED-ARCHIVE-DIRECTORY.directoryname(directory-number).  Also, don&rsquo;t forget to edit the Grapevine Data Base (Section 19.5.)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt serif">19.8.  Operations on MESSAGE.TXT Files</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">It is sometimes necessary to create a mailbox in a directory that doesn&rsquo;t have one, to delete a mailbox.  Since MESSAGE.TXT files have a funny "permanent" attribute that can&rsquo;t be set or cleared by any Exec commands, you have to create and destroy mailboxes using the MSGFIX subsystem, which requires that you enable yourself.  It has commands for creating and deleting mailboxes (i.e., MESSAGE.TXT files).  When a mailbox is deleted, its contents are copies into a file called OLDMESSAGE.TXT.  The command sequences to MSGFIX are as follows:</span><span class="tab" val="24"></span></div>
+<div style="width: 382pt; margin-left: 144pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!</span><span style="font: 10pt serif; text-decoration: underline">MSGFIX&lt;cr&gt;</span><span style="font: 10pt serif"><br>*</span><span style="font: 10pt serif; text-decoration: underline">C</span><span style="font: 10pt serif">reate MESSAGE.TXT for directory: </span><span style="font: 10pt serif; text-decoration: underline">DIRNAME &lt;cr&gt;</span><span style="font: 10pt serif"><br>*</span><span style="font: 10pt serif; text-decoration: underline">Q</span><span style="font: 10pt serif"><br>!</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span style="font: 10pt serif">to create a mailbox, or:</span></div>
+<div style="width: 382pt; margin-left: 144pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!</span><span style="font: 10pt serif; text-decoration: underline">MSGFIX&lt;cr&gt;</span><span style="font: 10pt serif"><br>*</span><span style="font: 10pt serif; text-decoration: underline">D</span><span style="font: 10pt serif">elete MESSAGE.TXT in directory: </span><span style="font: 10pt serif; text-decoration: underline">DIRNAME &lt;cr&gt;</span><span style="font: 10pt serif"><br>*</span><span style="font: 10pt serif; text-decoration: underline">Q</span><span style="font: 10pt serif"><br>!</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span style="font: 10pt serif">to delete a mailbox.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">It sometimes happens that a MESSAGE.TXT file has an excessive number of pages because the file has not been truncated for some reason.  This can be remedied by using the following safe and simple procedure:</span><span class="tab" val="24"></span></div>
+<div style="width: 382pt; margin-left: 144pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!CONN dirname&lt;cr&gt;<br>!RENAME MESSAGE.TXT FOO&lt;cr&gt;<br>!APPEND FOO MESSAGE.TXT&lt;cr&gt;<br>!DELETE FOO&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">In the case of a race occurring, the order of the old and new messages gets reversed, but no messages are lost.  Note that MESSAGE.TXT files acquire extra pages only when manipulated by MSG, so only MSG users (never Laurel users) should suffer this problem.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">When a MESSAGE.TXT file suffers a disk error, the recovery procedure is:</span><span class="tab" val="24"></span></div>
+<div style="width: 382pt; margin-left: 144pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!CONN dirname&lt;cr&gt;<br>!RENAME MESSAGE.TXT BADMESSAGE.TXT&lt;cr&gt;<br>!TECO&lt;cr&gt;<br>*;Y&lt;esc&gt;<br>Input File: BADMESSAGE.TXT&lt;cr&gt;<br>(unexpected daya error interrupt)<br>*;U&lt;esc&gt;<br>Output File: BADMESSAGE.TXT&lt;cr&gt;<br>*</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Then tell the user that BADMESSAGE.TXT may be retrieved for examination with Bravo or whatever.  The bad data should NOT be put back into MESSAGE.TXT, as that might cause the internal structure of MESSAGE.TXT to be ruined.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">19.9.  Reinstantiating a Destroyed Directory</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Sometimes a person whose Maxc directory has been killed needs to have that directory recreated.  This could be done by creating a brand new directory, but it is usually more convenient to recreate the directory from the information that was saved when it was previously destroyed.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The way to do this is to retrieve &lt;ACCOUNTS&gt;DELETED-USER-PARAMETERS.DIRNAME-(DIRNUMBER) and &lt;ACCOUNTS&gt;DELETED-ARCHIVE-DIRECTORY.DIRNAME(DIRNUM-BER) from archival storage (i.e., they will usually have been archived by the time that you want to recreate the directory); in some cases the DELETED-ARCHIVE-DIRECTORY file won&rsquo;t exist.  Then recreate the directory from these two files, as follows:</span><span class="tab" val="24"></span></div>
+<div style="width: 382pt; margin-left: 144pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">!E</span><span style="font: 10pt serif; vertical-align: 4pt">c</span><span style="font: 10pt serif">RECREATE DIRNAME&lt;cr&gt;<br>[SUPERPASSWORD] GUESS&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">This recreation procedure only works if the directory number has not been reassigned to some new directory in the interim.  If it has been reassigned then you must treat the creation as if it were a new directory.  Rename the old Archive-Directory as follows:</span><span class="tab" val="24"></span></div>
+<div style="width: 406pt; margin-left: 119pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif; text-decoration: underline">Rename&lt;esc&gt;DELETED-ARCHIVE-DIRECTORY.</span><span style="font: italic 10pt serif; text-decoration: underline">DirName</span><span style="font: 10pt serif; text-decoration: underline">(</span><span style="font: italic 10pt serif; text-decoration: underline">DirNumber</span><span style="font: 10pt serif; text-decoration: underline">)&lt;esc&gt;</span><span style="font: 10pt serif"><br>(to be) </span><span style="font: 10pt serif; text-decoration: underline">&lt;</span><span style="font: italic 10pt serif; text-decoration: underline">DirName</span><span style="font: 10pt serif; text-decoration: underline">&gt;V</span><span style="font: 10pt serif; vertical-align: 4pt; text-decoration: underline">c</span><span style="font: 10pt serif; text-decoration: underline">(DEL)]ARCHIVE-DIRECTORY[.;1&lt;cr&gt;</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Then add DIRNAME to PROJECTLIST and either UACHK.TXT or &lt;SYSTEM&gt;ARCHIVE-FILES-ONLY.TXT just as though a brand new directory were being created, and carry out the other procedures associated with creating a new directory.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If the directory should have a MESSAGE.TXT file, then you should create the MESSAGE.TXT file with MSGFIX as discussed in the previous section.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">19.10.  Retrieving Archived Files for Defunct Directories</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The easiest way to do this is to recreate the directory as discussed in the previous section, and then retrieve the files from archival storage in the normal way.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">An alternative method of retrieving archived files from defunct directories is to find out on what tape the file is archived, and use the BSYS "Single File" command to copy it from the tape to a disk file in some existing directory.  Unless the archive directory for the deleted directory was listed prior to destruction, the tape containing a particular archived file will generally be unknown.  Directories destroyed after 19 April 1978 have a listing of the archive directory on file in the CSL dead directory file.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">19.11.  Printing Accounting Information</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Running &lt;ACCOUNTANT&gt;USERAC.SAV will produce a printout of all the information on all the directories (requires enabled wheel status).  The various options for this subsystem will be revealed when you type "H" as a subcommand.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The accounting printout periodically posted on the CSL bulletin board is obtained by connecting to the &lt;ACCOUNTANT&gt; directory and running &lt;ACCOUNTANT&gt;MAXC-ACCT, which renames the fact files from the &lt;SYSTEM&gt; directory into &lt;ACCOUNTS&gt; and churns through all the fact files over the time period selected.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">RUNFIL &lt;ACCOUNTS&gt;HOGS.RUN will produce an output file named HOGS.DATE that shows the disk storage in use and the storage tied up by obsolete versions of files or files unreferenced in 90 days.</span><span class="tab" val="24"></span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

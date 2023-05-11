@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-20Bravo.Dm!7>MaxcOps17.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 405pt; margin-left: 121pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 65<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Software Maintenance Procedures</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Software Maintenance Procedures</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: center">
+<span style="font: bold 10pt serif">17.  SOFTWARE MAINTENANCE PROCEDURES</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">This section outlines maintenance procedures for selected pieces of software that are in fact still maintained at all.  The primary intent is to document the location of the sources and to identify the current maintainers.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">17.1.  Midas</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The current sources for Midas are kept on the "Maxc2 Midas" Alto disk (maintained by Fiala).  Reasonably current sources are also kept on [IVY]&lt;MAXC&gt; or [MAXC2]&lt;MAXC&gt; directories:  MSOURCES.DM along with MIDAS.RUN, LOADER.MB, and DEBUG.MB.  The various Midas command files are kept on DGSOURCES.DM along with the sources for the microdiagnostics.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Before initializing Midas on a new disk, be sure that you have the following files ready:</span></div>
+<div style="width: 391pt; margin-left: 135pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Midas.Programs</span><span class="tab" val="24"></span><span style="font: 10pt serif">(see below)<br>Gacha10.al</span><span class="tab" val="24"></span><span style="font: 10pt serif">The font Midas uses<br>Midas.Midas</span><span class="tab" val="24"></span><span style="font: 10pt serif">The initialization command file</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Midas.Programs contains a list of file names separated by blanks, commas, or carriage-returns.  The names must be typed in UPPER-CASE.  This list serves two purposes.  First, file pointers are built for all of the names to speed up OpenFile.  Next, the list of names for the "Run-Program" command menu is built.  If the file name contains no extension, then hint FP&rsquo;s will be built for both name.MB and name.MIDAS and name will be put in the "Run-Program" menu.  (However, the hint FP&rsquo;s are not built unless the file exists, and the file name will not be put in the "Run-Program" menu unless name.MIDAS exists.)  If the file name contains an extension, then it will be put in the quick OpenFile table, but won&rsquo;t appear in the "Run-Program" menu.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Midas creates and uses the following files:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Midas.State</span><span class="tab" val="24"></span><span style="font: 10pt serif">~40 pages</span><span class="tab" val="24"></span><span style="font: 10pt serif">Built for quick init by Midas/I</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span style="font: 10pt serif">Midas.Resume</span><span class="tab" val="24"></span><span style="font: 10pt serif">~40 pages</span><span class="tab" val="24"></span><span style="font: 10pt serif">Built before calling AltIO for resume</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: justify">
+<span style="font: 10pt serif">Midas.FixUps</span><span class="tab" val="24"></span><span style="font: 10pt serif">2 pages</span><span class="tab" val="24"></span><span style="font: 10pt serif">Built when external fixups occur in .MB files being </span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">loaded (Current microcode never uses this.)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span style="font: 10pt serif">Midas.Errors</span><span class="tab" val="24"></span><span style="font: 10pt serif">2 pages</span><span class="tab" val="24"></span><span style="font: 10pt serif">Written when "Compare" fails</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span style="font: 10pt serif">Midas.SymTab</span><span class="tab" val="24"></span><span style="font: 10pt serif">100 pages</span><span class="tab" val="24"></span><span style="font: 10pt serif">Written when symbol table overflows core buffers</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Altogether this is about 200 disk pages.  It is desirable to do this with a pretty clean disk, so that the files wind up contiguous on the disk and near to each other.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">17.2.  AltIO</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">AltIO is maintained by Taft using an Alto disk labelled "AltIO/Maxc2".  Backup copies of the source and command files are kept in a single dump-format file &lt;MAXC&gt;ALTIO.DM on Ivy.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">AltIO may be compiled and loaded by executing the command files CompileAltIO.cm and LoadAltIO.cm respectively.  AltIO makes use of a number of other Alto software packages available from the &lt;Alto&gt; directory.  These packages are listed in LoadAltIO.cm.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">17.3.  TM, MemBash, SMIDiag, Alto Microcode</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">These pieces of software are kept as dump-format files in the &lt;Maxc&gt; directory on Ivy.  The files are TM.dm, MemBash.dm, SMIDiag.dm, and MaxcAltoCode23.dm.  They are compiled and loaded by means of command files whose names follow the conventions used for AltIO.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">17.4.  Tenex and Diagnostic Microcode</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Sources for Maxc1 and Maxc2 Tenex microcode are maintained on the "Maxc1/2 Tenex Microcode" Alto disk by Fiala.  Sources for Maxc1 and Maxc2 microdiagnostics are maintained on the "Maxc1/2 Microdiagnostics" Alto disk by Fiala.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">These are backed up by Alto dump files stored on the IVY &lt;MAXC&gt; directory.  Common sources are used for both Maxc1 and Maxc2 with conditional assemblies used for parts of the microcode that are different on the two systems.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Cross reference listings of Tenex microcode sources are obtained by FTPing the sources to the Maxc2 ERF directory and doing RUNFIL CRREF.RUNFIL, which uses MCROSS to produce the cross reference listing.  The same procedure is used for microdiagnostic sources except that the DCRREF.RUNFIL command file is used.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">17.5.  Tenex</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The Tenex system for Maxc2 is generated from a set of sources maintained on Maxc2 in the &lt;134&gt; directory (for Tenex version 1.34).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The RUNFIL script LOADMAXC2.RUN may be used to assemble and load the new version of Tenex.  Most of the source files are assembled for the system yielding .REL files with extensions .2RL.  Some of the assemblies do not depend on any system parameters.  When changes are made to any system parameters in PARAMS.MAC or PROLOG.MAC, all the .2RL files should be deleted to force reassembly of them.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The result of assembling and loading a new Tenex is a file called MAXC2.SAV, plus some auxiliary files whose extensions are .MAXC2.  The bug string file and loader map are also printed on Clover;  these should be placed next to the log book in the Maxc room.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">After loading a new Tenex for Maxc2, all that is necessary is to run Micro-Exec and install MAXC2.SAV on an unused save area (e.g., 19) for stand-alone checkout.  The "Read.Tenex.From.-File" and "Write.Tenex.To.Area" commands should be used for this purpose.</span><span class="tab" val="24"></span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

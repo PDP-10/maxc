@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>File [Indigo]&lt;Maxc>MSOURCES.DM!2>mtv.bcpl</title>
+  </head>
+  <body>
+    <pre>
+//mtv.bcplget "streams.d"external [// OS	Wss; Puts; Resets; CallSwat// MSYMB	TVtoString// MCMD	DisplayError// Defined here	StreamFromTextName// Defined here for init only	TVSpareTVs; TVSpareTVec; PutTVs; ResetTVs; CloseTVs; BadTVsCall]structure TVS :[	@ST	NoteP	word	NoteArg	word]static [ TVSpareTVs; TVSpareTVec ]// Text Vec procedures// procedures made externallet StreamFromTextName(Act, TV, DotExt, ksType, ItemSize) = valof[	if TV!0 le 0 then DisplayError("Bad file name")	Resets(TVSpareTVs)	let DotFlag = false	for I = 1 to TV!0 do	[ let C = TV!I; if (C ge $a) &amp; (C le $z) then C = C &amp; 137B	  Puts(TVSpareTVs, C); if C eq $.  then DotFlag = true	]	if (not DotFlag) &amp; (((DotExt!0) &amp; #377) eq $.)	  then Wss(TVSpareTVs, DotExt)	let S = Act(TVtoString(TVSpareTVec), ksType, ItemSize)	if S eq 0 then DisplayError("unable to open file")	resultis S]//// local procedures//and PutTVs(Stream, Item) be[	let TV = Stream&gt;&gt;TVS.par1	let MaxX = Stream&gt;&gt;TVS.par2	if TV eq 0 then return	let X = TV!0	if X &lt; MaxX then	[ X = X + 1	  TV!X = Item	  TV!0 = X	]	if Stream&gt;&gt;TVS.NoteP ne 0 then	  (Stream&gt;&gt;TVS.NoteP)(Stream, Stream&gt;&gt;TVS.NoteArg)]and ResetTVs(Stream, TV, N, NoteP, Arg; numargs Nargs) be[	test Nargs ge 3	ifso	[ TV!0 = 0	  Stream&gt;&gt;TVS.par1 = TV	  Stream&gt;&gt;TVS.par2 = N	]	ifnot	[ let TV = Stream&gt;&gt;TVS.par1	  if TV ne 0 then TV!0 = 0	  if Stream&gt;&gt;TVS.NoteP ne 0 then	    (Stream&gt;&gt;TVS.NoteP)(Stream, Stream&gt;&gt;TVS.NoteArg)	]	if Nargs eq 5 then	[ Stream&gt;&gt;TVS.NoteP = NoteP	  Stream&gt;&gt;TVS.NoteArg = Arg	]]and CloseTVs(S) be[	S&gt;&gt;TVS.par1 = 0	S&gt;&gt;TVS.par2 = 0	S&gt;&gt;TVS.NoteP = 0]and BadTVsCall(Stream) be CallSwat()</pre>
+  </body>
+</html>

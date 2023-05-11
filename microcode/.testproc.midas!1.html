@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>File [Indigo]&lt;Maxc>testproc.midas!1</title>
+  </head>
+  <body>
+    <pre>
+L X Skip 3L X CloseOutput;		BackSkip to here to abortL X ShowError Error report on ERRORS.REPORTL X Return 0;			Skip to end of file on "Continue"L X Return 0;			and on "Abort"L X OpenOutput ERRORS;		"Errors.Report" receives summaryL X Run-ProgramL X DGBASICL X WriteMessage Testing with DGBASIC~L X Read-Cmds DGBASIC.GO;	Start the diagnostic and record errorsL X BackSkip 1;		Fail return--abort testingL X Run-ProgramL X DGPL X WriteMessage ~Testing with DGP~L X Read-Cmds DGP.GOL X BackSkip 1;		Fail return--abort testingL X BackSkip 1;		Finished--close output and done</pre>
+  </body>
+</html>

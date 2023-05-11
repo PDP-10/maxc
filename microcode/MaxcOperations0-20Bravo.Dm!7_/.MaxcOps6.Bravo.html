@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-20Bravo.Dm!7>MaxcOps6.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 13<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Starting Tenex</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Starting Tenex</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 2pt; text-align: center">
+<span style="font: bold 10pt serif">6.  STARTING TENEX</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+</div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The current Micro-Exec normally has been setup to have the current disk configuration. If you doubt this, type:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Print.Disk.Configuration &lt;cr&gt;     (P D C)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">and it will print out the current disk configuration.  Compare this to the numbers on the mounted disk packs.  If you are confident, type:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">GO&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">which will first run a brief (~30 second) memory test, then boot in Tenex from the disk and start it running.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If the disk configuration printed does not agree with the actual then type:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Set.Disk.Configuration &lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif">(S D C)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">which asks for parameters via the same format used in print.disk.configuration.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">After setting the correct disk configuration you must write MicroExec to area 1 by typing:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Write.Micro.Exec.To.Area &lt;Area&gt; 1&lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif">(W M E T A.1)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Now you may type:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">GO&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Tenex may ask for the date and time.  (The prompt specifies the format.)  Please be careful to enter this correctly.  If Tenex asks you to reconfirm your typein, you probably blew it and you should hit "Del" and try again.  (But if you are really sure you typed the correct date and time, confirm with carriage return).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Tenex then runs the Bsys and Checkdsk programs to verify the consistency of the file system.  This takes about 15 minutes (the time is proportional to the number of files in the entire system), at the end of which is broadcast the message "Tenex in operation" if all is well.  If any uncorrectable errors have been detected, the message "Tenex not available: Disk needs fixing" will be broadcast.  If this occurs, you should attempt to notify system personnel.  As a last resort, consult Section 18 for information on fixing errors of this sort.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If Tenex was last taken down in an orderly fashion (as opposed to crashing), it is not really necessary to run Bsys and Checkdsk (though it will never hurt to do so).  The running of these programs may be bypassed (saving 15 minutes) by the following procedure:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">1.</span><span class="tab" val="24"></span><span style="font: 10pt serif">Load the microcode using the MEXECGO command file, as described at the end of the previous section.  This causes Micro-Exec to be started on Maxc.</span><span class="tab" val="24"></span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

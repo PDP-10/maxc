@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>File [Indigo]&lt;Maxc>MSOURCES.DM!2>mdisp.bcpl</title>
+  </head>
+  <body>
+    <pre>
+//mdisp.bcpl// Midas Display Bit Image Package
+
+get "mdecl.d"external [// OS	InitializeZone; CallSwat; Zero; SetBlock; MoveBlock// MIDAS	ZoneErr// MRGN	ScreenLineDirty; ScreenTV; PaintDirtyRegions// MMPRGN	MPDEveryTime; MPDlist// MINIT1	ScreenWidth; ScreenHeight// MASM	ClearAndScanConvert// MOVERLAY	OverlayZone; OverlayFlushed// STATE package	GetEvenStorage; GetStorage// Defined here	PaintLine; GetMouseAndCursor; FinishDisplay; Blink	SetDisplay; MakeDispZoneAvail; ReUseDispSpace; PrepareCharInv	VertIntFlag; NwdsPerScanLine; FontP; Init2; VecInit	NewMB; NewLx; NewCx	//Mouse stuff	DisplayOff		//Predicate modified by SetDisplay// Defined here for init only	FontCharWidth; SavedDASTART	SaveAdd1; SaveData1; SaveAdd2; SaveData2; SaveAdd3; SaveData3	SavervDASTART; StandardLineHeight; Evec; PseudoFontVec; BitBufferLen	LineCtrlBlockPtrsVector; DCBPoolSize; DCBPool	FreeBitBufferChain; BBblockSize; BBblock; FirstDCB	GetFreeDCB; AvailBlock; AvailBlockNLines; AvailBlockSize	AlmostFreeBitBufferChain; @BadMouseP; DCBPoolIn; DCBPoolOut	DCBPoolAvail; DispSpaceNowAvail; LinesInUse	InitBBblock; PutLineInService	]
+static [// local staticsDisplayOff = true; SavedDASTART
+BitBufferLen		//630B for GACHA10.AL, ScreenWidth = 76
+LineCtrlBlockPtrsVectorLinesInUse
+FreeBitBufferChain = 0; 
+AlmostFreeBitBufferChain = 0
+VertIntFlag = false; 
+SavervDASTART; FirstDCB; StandardLineHeightNwdsPerScanLine@BadMouseP = true; @LastMx; @LastMy; @NewMB; @NewLx; @NewCx
+SaveAdd1 = IntVec+VertIntChan; 
+SaveAdd2 = DASTART+1; 
+SaveAdd3 = IntActive
+SaveData1; 
+SaveData2; 
+SaveData3
+FontP FontCharWidth// DCB poolDCBPool; DCBPoolIn = 0; DCBPoolOut = 1; DCBPoolAvail = 0; DCBPoolSize// bit buffer blocks and avail space controlBBblock; BBblockSize; DispSpaceNowAvail = false AvailBlock; AvailBlockSize; AvailBlockNLines// Pseudo fontsEvec; PseudoFontVec]
+// procedures made externallet VecInit(Size,Value) = valof[	let Vector = GetStorage(Size+1)	Vector!0 = Size; SetBlock(Vector+1,Value,Size)	resultis Vector]and Init2() be[	BBblock = GetEvenStorage(BBblockSize)	AvailBlock = BBblock+BBblockSize-AvailBlockSize	OverlayZone = InitializeZone(AvailBlock,AvailBlockSize,0,ZoneErr)]and PaintLine(L, TV) be[	if L &lt; 1 % L &gt; ScreenHeight then CallSwat()	let LCB = LineCtrlBlockPtrsVector!L	unless LCB&gt;&gt;LCB.BitBuffer ne 0 then return	let NewBB = GetFreeBitBuffer()	ClearAndScanConvert(NewBB, TV)	ChangeBitBuffer(LCB, NewBB)]and MakeDispZoneAvail() = valof[	unless DispSpaceNowAvail then CallSwat()	DispSpaceNowAvail = false// now take lines out of service	for L = 1 to AvailBlockNLines do	   RemoveLineFromService(L, true)// pull buffers out of almost free chain	let P = lv AlmostFreeBitBufferChain	while P!0 ne 0 do	[ let B = P!0	  test B ge AvailBlock	  ifso P!0 = B!0	  ifnot P = B	]// pull buffers out of free chain	P = lv FreeBitBufferChain	while P!0 ne 0 do	[ let B = P!0	  test B ge AvailBlock	  ifso P!0 = B!0	  ifnot P = B	]// now remove buffers from busy lines	for L = 1 to ScreenHeight do	[ let LCB = LineCtrlBlockPtrsVector!L	  let BB = LCB&gt;&gt;LCB.BitBuffer	  if BB eq 0 then loop	  if BB ge AvailBlock then	  [ let NewBB = GetFreeBitBuffer()	    MoveBlock(NewBB,BB,BitBufferLen+2)	    LCB&gt;&gt;LCB.BitBuffer = 0 // so wont go onto almost free list	    ChangeBitBuffer(LCB, NewBB)	  ]	]// now wait	until VertIntFlag do []// now we are ready	resultis InitializeZone(AvailBlock, AvailBlockSize,0,ZoneErr)]and ReUseDispSpace() be[	if DispSpaceNowAvail then CallSwat()	DispSpaceNowAvail = true	InitBBblock(AvailBlock, AvailBlockNLines)	OverlayZone = 0; OverlayFlushed = false	MPDEveryTime(MPDlist,true); PaintDirtyRegions()	for L = 1 to AvailBlockNLines do	[ ScreenLineDirty!L = false; PutLineInService(L) ]]and RemoveLineFromService(L, BlackFlag) be[	let LCB = LineCtrlBlockPtrsVector!L	unless LCB&gt;&gt;LCB.BitBuffer ne 0 then return	ChangeDCB(LCB, NwdsPerScanLine, BlackFlag, 0)]and PutLineInService(L) be[	let LCB = LineCtrlBlockPtrsVector!L	if (LCB&gt;&gt;LCB.BitBuffer ne 0) % (LinesInUse!L eq 0) then return	let NewBB = GetFreeBitBuffer()//	let Fill = (((LCB&gt;&gt;LCB.DispCtrlBlock)!1)&amp;#40000) ne 0? #177777,0//	SetBlock(NewBB+2,Fill,BitBufferLen)	ClearAndScanConvert(NewBB,ScreenTV!L)	ChangeDCB(LCB, NwdsPerScanLine, false, NewBB)]and GetFreeBitBuffer() = valof[	if (AlmostFreeBitBufferChain ne 0) &amp; VertIntFlag then		EmancipateAlmostFreeList()	if FreeBitBufferChain eq 0 then	[ until VertIntFlag do []	  EmancipateAlmostFreeList()	]	while FreeBitBufferChain eq 0 do CallSwat()	let NewBB = FreeBitBufferChain	FreeBitBufferChain = NewBB!BBLink	NewBB!BBSize = BitBufferLen	resultis NewBB]
+and EmancipateAlmostFreeList() be
+[	let CopyList = AlmostFreeBitBufferChain
+	while CopyList ne 0 do
+	[	let NewCopyList = CopyList!BBLink
+		CopyList!BBLink = FreeBitBufferChain
+		FreeBitBufferChain = CopyList
+		CopyList = NewCopyList
+	]
+	AlmostFreeBitBufferChain = 0
+]and ChangeBitBuffer(LCB, NewBB) be[	if LCB&gt;&gt;LCB.BitBuffer ne 0 then	[ let OldBB = LCB&gt;&gt;LCB.BitBuffer	  OldBB!BBLink = AlmostFreeBitBufferChain	  AlmostFreeBitBufferChain = OldBB	  VertIntFlag = false	]	LCB&gt;&gt;LCB.BitBuffer = NewBB	let DCB = LCB&gt;&gt;LCB.DispCtrlBlock	DCB!2 = (NewBB eq 0? 0, NewBB+2)]and ChangeDCB(LCB, Nwds, ifBlack, BitBuffer) be[	let NewDCB = GetFreeDCB(Nwds,ifBlack,BitBuffer,LCB&gt;&gt;LCB.Hover2)	let PrevLCB = LCB&gt;&gt;LCB.PrevLCB	let PrevDCB = (PrevLCB eq 0? FirstDCB, PrevLCB&gt;&gt;LCB.DispCtrlBlock)	let OldDCB = LCB&gt;&gt;LCB.DispCtrlBlock	let OldBB = LCB&gt;&gt;LCB.BitBuffer	NewDCB!0 = OldDCB!0	PrevDCB!0 = NewDCB	DCBPool!DCBPoolIn = OldDCB	DCBPoolIn = DCBPoolIn + 1	if DCBPoolIn ge DCBPoolSize then DCBPoolIn = 0	if OldBB ne 0 then	[ OldBB!BBLink = AlmostFreeBitBufferChain	  AlmostFreeBitBufferChain = OldBB	  VertIntFlag = false	]	LCB&gt;&gt;LCB.DispCtrlBlock = NewDCB	LCB&gt;&gt;LCB.BitBuffer = BitBuffer	BadMouseP = true]and GetFreeDCB(Nwds, ifBlack, BitBuffer, Hover2) = valof[	if DCBPoolOut eq DCBPoolAvail then	[ until VertIntFlag do []	//Lots of extras created to avoid	  DCBPoolAvail = DCBPoolIn	//this wait	]	while DCBPoolOut eq DCBPoolAvail do CallSwat()	let DCB = DCBPool!DCBPoolOut	DCBPoolOut = DCBPoolOut + 1	if DCBPoolOut ge DCBPoolSize then DCBPoolOut = 0	DCB!0 = 0	DCB!1 = (BitBuffer eq 0? 0,Nwds)%(ifBlack? #40000,0)%(HTab lshift 8)	DCB!2 = (BitBuffer eq 0? 0, BitBuffer + 2)	DCB!3 = Hover2	resultis DCB]	//Called only by DriverLoop.  Results left in NewMB, NewCx, and NewLxand GetMouseAndCursor() be[	NewMB = (not rv #177030) &amp; 7	let Mx = rv #426	let My = rv #427	if BadMouseP % (My ne LastMy) do	[ NewLx = 0	  let scany = SkipScanLines	  while scany &lt; My logand NewLx &lt; ScreenHeight do	  [ NewLx = NewLx + 1	    scany = scany +		  (((LineCtrlBlockPtrsVector!NewLx)&gt;&gt;LCB.DispCtrlBlock)!3) lshift 1	  ]	  if NewLx le 0 then NewLx = 1	  LastMy = My	]	if BadMouseP % (Mx ne LastMx) do	[ LastMx = Mx	  NewCx = 0	  let bx = #16 + HTab*16  // value of Mx when pointing			//  at left edge of first char 	  while bx &lt; Mx logand NewCx &lt; ScreenWidth do	  [ NewCx = NewCx + 1	    bx = bx + FontCharWidth	  ]	  if NewCx le 0 then NewCx = 1	]	BadMouseP = false]and InitBBblock(Block, N) be  for I = 1 to N do  [	Block!0 = FreeBitBufferChain	FreeBitBufferChain = Block	Block = Block + BitBufferLen + 2  ]
+
+and FinishDisplay() be
+[	rv SaveAdd3 = SaveData3	rv SaveAdd1 = SaveData1	rv SaveAdd2 = SaveData2
+	rv DASTART = SavervDASTART
+]
+
+and Blink() be
+[	let Save = rv DASTART
+	rv DASTART = 0
+	for i = 1 to 10000 loop
+	rv DASTART = Save
+]and SetDisplay(Off) = valof[	if DisplayOff eq Off then resultis Off	test Off	ifso [ SavedDASTART = rv DASTART; rv DASTART = 0 ]	ifnot	[ if OverlayFlushed then ReUseDispSpace()	  rv DASTART = SavedDASTART	]	DisplayOff = Off; resultis not Off]
+and PrepareCharInv(Cx) = valof //  inverted, black for white[	Cx = Cx + Cx!0	manifest [ PFVecSize = 50; EvecSize = 10 ]	let Ex = 0	let LineHeight = StandardLineHeight	let Px = PseudoFontVec + LineHeight	Evec!Ex = Px - Evec - Ex	Ex = Ex + 1DispCharInvL1:	while true do	[	let HD,XH = (Cx!1)&lt;&lt;lh,(Cx!1)&lt;&lt;rh		let BottomSpace = LineHeight - HD - XH		let Mask = (((Cx!0)&amp;1) eq 0 ? #177777,			not (#177777 rshift ((Cx!0) rshift 1) ))		let PBMx = Px - LineHeight - 1		SetBlock(PBMx+1,Mask,HD)		PBMx = PBMx + HD		let CBMx = Cx - XH - 1		for I = 1 to XH do PBMx!I = (not (CBMx!I)) &amp; Mask		PBMx = PBMx + XH		SetBlock(PBMx+1,Mask,BottomSpace)		let Another = (((Cx!0)&amp;1) eq 0) &amp; ((Px + LineHeight + 3) le			(PseudoFontVec+PFVecSize) &amp;  Ex le EvecSize)		Px!0 = (Another? 2*(Px+LineHeight+2),			(((Cx!0)&amp;1) eq 0?(Evec+Ex-FontP) lshift 1,Cx!0))		Px!1 = LineHeight		if not Another then break		Px = Px + LineHeight + 2		let rx = (Cx!0) rshift 1		Cx = FontP + rx + FontP!rx		Evec!Ex = Px - Evec - Ex		Ex = Ex + 1DispCharInvL2:	]DispCharInvL3: resultis Evec]</pre>
+  </body>
+</html>

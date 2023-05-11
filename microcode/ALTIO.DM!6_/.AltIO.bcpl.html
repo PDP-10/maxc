@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>File [Indigo]&lt;Maxc>ALTIO.DM!6>AltIO.bcpl</title>
+  </head>
+  <body>
+    <pre>
+// AltIO.bcpl -- Maxc2 Alto I/O control program//	Last modified December 13, 1982  9:33 AMget "altio.decl"get "sysdefs.d"external[//outgoing proceduresAltIO; AltIOFinish//incoming proceduresJunta; AltIOInit; AddToZone; AllocateEnqueue; CallContextList; LogClose; StartIO; USetBLV; LoadRam//outgoing staticsversionText; silentBoot//incoming staticssysZone; pbiFreeQ; numPBI; ctxQ; altIOSavedUFP; lvUserFinishProclenPBI; savedParityHandler; altIOSavedSCP; lvSwatContextProc]static[versionTextsilentBoot = false]// ---------------------------------------------------------------------------let AltIO() be Junta(levDisplay, AfterJunta)// ---------------------------------------------------------------------------// ---------------------------------------------------------------------------and AfterJunta() be// ---------------------------------------------------------------------------[versionText = "AltIO of December 13, 1982"// Call main initializationAltIOInit()// Throw away initialization code, add its space to zoneAddToZone(sysZone, AltIOInit, LoadRam-AltIOInit)// Cut up remaining storage into PBIs   [   let pbi = Allocate(sysZone, lenPBI, true)   if pbi eq 0 break   Enqueue(pbiFreeQ, pbi)   numPBI = numPBI+1   ] repeat// Note:  the top-level stack is freed by AltIOCommand, so sysZone will// have at least 1200 free words after the dust settles.// Run all the contexts foreverCallContextList(ctxQ!0) repeat]// ---------------------------------------------------------------------------and AltIOFinish() be// ---------------------------------------------------------------------------// Procedure called to clean up when a finish is done[@#420 = 0  //turn off display@#501 = savedParityHandler  //reinstall standard parity handlerLogClose(sysZone)@lvSwatContextProc = altIOSavedSCP@lvUserFinishProc = altIOSavedUFPif silentBoot then [ USetBLV(#177776); StartIO(#100000) ]]</pre>
+  </body>
+</html>

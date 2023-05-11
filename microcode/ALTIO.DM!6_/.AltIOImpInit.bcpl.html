@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>File [Indigo]&lt;Maxc>ALTIO.DM!6>AltIOImpInit.bcpl</title>
+  </head>
+  <body>
+    <pre>
+// AltIOImpInit.bcpl -- Maxc2 Alto Imp driver initialization//	Last modified April 20, 1978  8:01 PMget "Pup0.decl"get "AltIOImp.decl"external[// Outgoing proceduresInitAltoImp// Incoming proceduresEncapsulateImpPup; SendImpPacket; ImpResetImpInputInterrupt; ImpOutputInterrupt; ImpProcessInitializeInterrupt; FindInterruptMask; InitializeContextAllocate; Zero; Enqueue; FalsePredicate// Incoming staticsimpNDB; ndbQ; impMaxcBuf]manifest[numInputIMBs = 2numOutputIMBs = 2lenIntStack = 75lenProcStack = 75]//----------------------------------------------------------------------------let InitAltoImp(zone, ctxQ) be//----------------------------------------------------------------------------[impNDB = Allocate(zone, lenImpNDB)Zero(impNDB, lenImpNDB)impNDB&gt;&gt;ImpNDB.encapsulatePup = EncapsulateImpPupimpNDB&gt;&gt;ImpNDB.level0Transmit = SendImpPacketimpNDB&gt;&gt;ImpNDB.level0Stats = FalsePredicateimpNDB&gt;&gt;ImpNDB.netType = netTypeArpaEnqueue(ndbQ, impNDB)// Make some free Imp Message Buffersfor i = 1 to numInputIMBs do   Enqueue(lv impNDB&gt;&gt;ImpNDB.freeInputIMBQ, Allocate(zone, lenIMB))for i = 1 to numOutputIMBs do   Enqueue(lv impNDB&gt;&gt;ImpNDB.freeOutputIMBQ, Allocate(zone, lenIMB))impMaxcBuf = Allocate(zone, lenMaxcBuf)// Set up Imp Control Blocklet icb = Allocate(zone, lenICB, false, true)  // even wordimpNDB&gt;&gt;ImpNDB.icb = icbZero(icb, lenICB)// Initialize interruptsicb&gt;&gt;ICB.inputChanMask = InitializeInterrupt(Allocate(zone, lenIntStack), lenIntStack, FindInterruptMask(#400), ImpInputInterrupt)icb&gt;&gt;ICB.outputChanMask = InitializeInterrupt(Allocate(zone, lenIntStack), lenIntStack, FindInterruptMask(#400), ImpOutputInterrupt)// Initialize Imp processEnqueue(ctxQ, InitializeContext(Allocate(zone, lenProcStack), lenProcStack, ImpProcess))// Initialize statusimpNDB&gt;&gt;ImpNDB.iError = trueimpNDB&gt;&gt;ImpNDB.oError = trueImpReset()]</pre>
+  </body>
+</html>

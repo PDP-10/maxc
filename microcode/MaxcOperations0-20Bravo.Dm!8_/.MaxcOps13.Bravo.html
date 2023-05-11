@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-20Bravo.Dm!8>MaxcOps13.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 405pt; margin-left: 121pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 42<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Hardware Diagnostic and Maintenance Procedures</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Hardware Diagnostic and Maintenance Procedures</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: center">
+<span style="font: bold 10pt serif">13.  HARDWARE DIAGNOSTIC and MAINTENANCE PROCEDURES</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">This section discusses operation of various hardware diagnostic software and firmware.  Microprocessor diagnostics are normally used to isolate suspected failures of the microprocessor or port hardware.  Micro-Exec memory and disk testing commands are generally used to isolate suspected failures of disk units and main storage modules.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The microprocessor diagnostics require that a small nucleus of the microprocessor and its interface to the Alto be working, before meaningful failure diagnosis can take place.  When a failure has occurred in this essential nucleus, the Midas "Test-All" command and SMIDiag.run are used to isolate the failure.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">MemBash and TM have been used to check out memory reference interference problems and failures in the Alto memory interface.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">13.1.  Running Microprocessor Diagnostics</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The microprocessor diagnostics are normally kept on the Alto disk.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">You must obtain the notebook labelled "Microprocessor Diagnostics" or "Maxc Diagnostics" in order to do any useful debugging.  However, the diagnostics all fall into a common pattern and they can usually be run in a simple-minded way without understanding too much about what the programs are really doing.  The following generalizations may be helpful.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Associated with each of the diagnostics described below is a command file whose name is the same as that of the diagnostic.  If you type to Nova DOS or to the Alto Executive:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">MIDAS diagname &lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Midas will load the diagnostic and show registers pertinent to the diagnostic&rsquo;s operation on the display.  You may wish to set some parameters before starting a diagnostic (for example, the low and high addresses for a memory test).  However, the values as loaded are reasonable for thorough testing.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">When you are ready, type START;G to start the diagnostic.  (DGM has two alternate starting addresses for interrupt system testing.)  The diagnostic will halt after one pass at IMA=20 (DGIML is the only exception to this rule:  it breaks at 3200 on Maxc1 and 7200 on Maxc2).  This means that no failures were detected.  To repeat, type ;P to Midas.  To loop indefinitely, delete the breakpoint at 20 by typing 20;K and then ;P.  All of the diagnostics except DGM loop in less than two seconds, so something is wrong if the machine hangs in the loop.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">A breakpoint at any location except 20 indicates that an error was detected.  The most common error breakpoint is at 25 or 26, the comparison error breakpoint.  The location in the diagnostic<br>from which the comparison routine was called is displayed at STK 0.  You can get Midas to tell you the nearest label by selecting the value to the right of "STK 0" with the middle mouse button.  Following the .LS listing is the diagnostic listing, which contains general operating instructions in comments preceding the program itself.  DBEG0 is assembled or loaded ahead of some diagnostics, so its listing and .LS file may also be relevant.  Some diagnostics INSERT other files or are assembled from several sources, so you may have to look a bit to find the relevant listings.  When tracing an error, find the tag nearest the address in STK 0 (if the breakpoint is at IMA=26) or IMA (if the breakpoint is elsewhere) and read the comments there from the listing.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If the breakpoint is at IMA=26, the diagnostic may be resumed from the point of error by the command ;P, which will return to the caller of the compare routine (this usually works but<br>not always).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">The diagnostic names and what they test are listed below:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGBASIC.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Most basic diagnostic.  Does not use the main memory, the inter-<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">rupt system or the P-register input multiplexors.  Tests everthing<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">thing except the SM, DM, DM1, DM2, LM, and RM memories<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">first, then tests these memories and the F-register.  Cycle time &lt; 1<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">second.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGP.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests the P-register inputs and a few afterthoughts from<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">DGBASIC.MB.  Cycle time &lt; 1 second.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGALU.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests an assortment of P-register, Q-register, and ALU operations<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">using random numbers.  Cycle time &lt; 1 second.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGM.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests the memory interfaces.  There are alternate entry points at<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">START and XSTART for interrupt system testing.  Be sure to read<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">the listing comments before starting at XSTART.  Cycle time ~ 20<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">minutes to test each 128K of main memory;  correspondingly less if<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">the address range is restricted.  </span><span style="font: italic 10pt serif">Note:</span><span style="font: 10pt serif">  After running DGM, you<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">have to go through the "Power Up" procedure before running the<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">PDP-10 microcode again, because certain low core locations that<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">must be zero are not left zero by DGM.  This will cause an<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">immediate NVIO punt, if you forget to do this.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGI.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests the interrupt system and repeats parts of DGBASIC and DGP<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">affected by interrupts.  Cycle time &lt; 1 second.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGIML/DGIMH.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests the SM, DM, DM1, DM2, and MP memories using random<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">numbers, then the instruction memory (IM) first by using each of<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">the 72 patterns of a single 0 in a field of 1&rsquo;s, then the 72 patterns of<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">a single 1 in a field of 0&rsquo;s, then random numbers.  DGIML runs in<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">the top of IM and tests the memory below it, while DGIMH runs<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">in the bottom of IM and tests the memory above it.  Cycle time &lt; 3<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">seconds.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Alternate starting addresses exist to test only IM, only MP, or only<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">SM/DM/DM1/DM2 (which are physically a single memory).<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">There are a number of special loops for repeating test sequences<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">that have provoked failures in the past.</span><span class="tab" val="24"></span><span style="font: 10pt serif"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGRL.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests the right register bank (RM) and the left register bank (LM)<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">using random numbers.  Cycle time &lt; 1 second.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGMR.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests the main memory using random numbers.  Cycle time ~ 5<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">seconds.  </span><span style="font: italic 10pt serif">Note:</span><span style="font: 10pt serif">  After running DGMR, you have to go through the<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">"Power Up" procedure before running the PDP-10 microcode to<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">clear several low core locations that must be zeroed but are smashed<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">by DGMR.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DGREG.MB</span><span class="tab" val="24"></span><span style="font: 10pt serif">Tests assorted registers with random numbers.  Like DGALU,<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">DGREG is a reliability diagnostic that supplements the basic tests<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">in DGBASIC and DGP.  Cycle time &lt; 1 second.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">13.2.  Running PDP-10 Diagnostics</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">PDP-10 instruction diagnostics 0A through 0N and 0R may be run on Maxc either in stand-alone mode or under Tenex.  We use them only for checking out new PDP-10 emulator microcode and not for hardware diagnosis (which is what they were originally intended for).  Some of them have been patched to account for Maxc incompatibilities.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">There are two methods of running PDP-10 diagnostics stand-alone.  The more convenient is to run them from Micro-Exec by means of the "run.diagnostic.program" command.  However, if the microcode is working so poorly that Micro-Exec won&rsquo;t run, the other method is to load them from the Alto using AltIO&rsquo;s "Load" command.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Running diagnostics from Micro-Exec is simple.  All the diagnostics that will run on Maxc are stored as programs on save area 2.  They may be listed out by the "Print.Program.Directory" command.  To execute a single pass of a given diagnostic, type:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*</span><span style="font: 10pt serif; text-decoration: underline">Run.Diagnostic.Program &lt;program name&gt; &lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Control returns to Micro-Exec when the diagnostic is finished.  To make the program loop forever, type:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*</span><span style="font: 10pt serif; text-decoration: underline">Goto 4000 &lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The iteration count (a decrementing negative number) may be displayed by examining Maxc location 1.  To abort this, you have to either reboot Micro-Exec or halt the microprocessor with AltIO "H" command and then restart Micro-Exec with "20G."</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Running diagnostics using DMPLD or AltIO is somewhat messier.  This procedure should be used only when, due to hardware or microcode problems, it is impossible to run the diagnostics from Micro-Exec.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">The procedure is as follows:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">1)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Retrieve the diagnostics from the &lt;MAXC&gt;DIAGNOSTICS&gt; directory on Ivy using FTP.  Only a few diagnostics will fit on the Alto disk at once.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">2)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Load the PDP-10 microcode by means of the "MIDAS TENLOAD" command.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">3)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Enter AltIO by selecting the "AltIO", "Dont-Go", and "Do-It" menu items.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">4)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Load the selected diagnostic into Maxc memory by means of AltIO&rsquo;s "Load" command.  Then make sure all the patches have been made.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">5)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Start the diagnostic by issuing the "Go" command.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">On Ivy, the &lt;MAXC&gt;DIAGNOSTICS&gt; directory contains all the PDP-10 diagnostics, along with a set of RUNFILs for running them in user mode under Tenex (note that diagnostic 0D cannot be run in user mode).  The script named &lt;diagnostic name&gt;.RUNFIL will cause the specified diagnostic to be started and run forever (type control-B to stop).  Additionally, there are command files BASIC.RUNFIL and RELIABILITY.RUNFIL which execute one pass of diagnostics 0A-0H and 0I-0N respectively.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: justify">
+<span style="font: bold 10pt serif">13.3.  Memory Maintenance</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Memory maintenance is scheduled periodically every 3 months or so to replace storage ic&rsquo;s that have failed.  Because the memory is error-corrected, the system can be operated with a number of bad components, so memory maintenance is not scheduled until the number of failures becomes significant.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">The procedure for doing this is as follows:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">1) Schedule the system down using the procedure discussed in "Stopping Tenex."</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">2) At the appointed time, the system will halt; then unprotect AltIO with 3301P.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">3) Boot MicroExec with the AltIO "B" command.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">4) Run "Test.Memory.Slow" as discussed below.  You want to get output on paper; you should issue the "Diablo Printer On" command to AltIO before starting the test.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">5) Power down the system as discussed in the "Power Down" section.  It is possible to power-off only the memory (so you don&rsquo;t have to turn off the disks).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">6) Pull the cards affected by bad chips and mark the bad ic&rsquo;s with a magic marker; interpret the output of "Test.Memory.Slow" as discussed below.  Record the serial numbers of the boards pulled from each position and attempt to restore the cards to their original positions after repair.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">7) Replace the bad 1103 ic&rsquo;s or, if that isn&rsquo;t possible, use the spare memory cards in the rack above the Maxc2 Alto.  (Refer to </span><span style="font: bold italic 10pt serif">Appendix A</span><span style="font: 10pt serif"> for diagrams showing memory board and chip locations.)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">8) Restore the repaired cards to their original positions (if using a spare card, mark the bad card with the complete failure information using a piece of paper and scotch tape).</span><span class="tab" val="24"></span><span style="font: 10pt serif"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">9) Power up the system as discussed in the "Power Up" section.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">10) Reload the microcode and restart AltIO and MicroExec using "Midas MExecGo," as discussed in the "Loading the PDP-10 Emulator" section; repeat Test.Memory.Slow to see if the repairs have been successful.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">11) If everything is ok, restart Tenex.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Memory maintenance is performed with the aid of Micro-Exec.</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span style="font: 10pt serif">  After loading the microcode and starting up Micro-Exec, simply type:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*</span><span style="font: 10pt serif; text-decoration: underline">Test.Memory.Slow &lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">This requires about 6 minutes to test all 384K of memory.  All data, tag, and parity bit failures cause an error count to be accumulated for the affected chip.  The physical location of each chip with errors is reported at the end of testing each memory cabinet, along with the pages affected and the error count.  Every word in memory is tested 82 times using various patterns, so every chip is written into and read from 83968 times.  Hence, a total chip failure will generate on the order of 40000 errors (since it will yield the wrong value approximately half the time), while a solid single bit failure will generate on the order of 40 errors.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Conclusively diagnosed check bit failures are also reported in this manner.  For check bit failures that Micro-Exec cannot diagnose (due to an insufficient sample or lack of any obviously failing bit pattern), information is printed out as to the frequency of zeroes and ones in the </span><span style="font: italic 10pt serif">correct</span><span style="font: 10pt serif"> values of each check bit.  Since the check bits can&rsquo;t actually be read, the best that can be done is to deduce which check bit is failing on the basis of these frequencies.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The "Test.Memory.Verbose" command does everything that "Test.Memory.Slow" does, but also prints out the address, error type, correct data, incorrect data, and exclusive or for every error.  For check bit failures, the correct data and the computed Hamming code are printed out.  This command will generate reams of output unless the memory is pretty clean to begin with.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If the diagnostic crashes due to "fatal error from wrong place in code", one should re-boot Micro-Exec and issue the "Test.Memory.Write.Slow" command before running the memory test.  This sets a mode switch that forces Micro-Exec to use a more conservative (but slower) method of writing data into the memory under test.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">To obtain hardcopy of the memory error printout, issue the "Diablo Copy On" command in the AltIO command window before starting the memory test.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Because of error correction, Tenex can run ok with bad bits and even bad cards in the memory system.  Exception:  a double error in pages 0 to about 217 will prevent Tenex from running.  Non-hardware-maintainers should ordinarily not attempt to repair the memory system.  However, the following instructions for locating failures reported by Test.Memory.Slow (or Test.Memory.Fast) are provided, just in case.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 8pt serif; vertical-align: 4pt">------------------------------<br>1</span><span style="font: 8pt serif">There is also a Maxc memory diagnostic called TMEM which runs on the Nova, but it does not test memory as thoroughly, does not find bad check bits, and requires the use of a second program, PER, to analyze failures.  These programs are therefore not documented here.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">The error printout is of the form:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Quad q Cab c Card d Col h Row r  Pages 1360-1367 bit 14, 10 errors</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">where q is J, K, L, or M; c is 0 to 3; d is 1 to 16; h is 0 to 11; and r is 0 to 7.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The cabinets are numbered consecutively 0, 1, 2, ... starting with the one next to the processor.  The quadrants are each represented by a row of 16 cards starting at the top of the cabinet, so J is the top row, then K, then L, and M is the bottom row.  In each row the cards are numbered 1 to 16 starting at the left as you look from the back of the cabinet.  (Ref. </span><span style="font: bold 10pt serif">Figure 4, </span><span style="font: bold italic 10pt serif">Appendix.</span><span style="font: 10pt serif">)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If you hold the cards with the ic&rsquo;s up, edge connector toward you, the storage chips form an array of 12 columns by 8 rows starting with 0,,0 in the lower right corner.  The other parts on the board are 12 address drivers on the left and right and 6 sense amps and other stuff next to the edge connector.  (Ref. </span><span style="font: bold 10pt serif">Figure 5, </span><span style="font: bold italic 10pt serif">Appendix.</span><span style="font: 10pt serif">)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">In an emergency, you can replace a card with one of the spares in the unused rack above the Maxc2 Alto.  If you have to do this, be sure to attach the error printout and a note about where the card came from to the card you remove; leave the card on the table in the Maxc room so system maintainers can find it.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: justify">
+<span style="font: bold 10pt serif">13.4.  Disk Maintenance</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Micro-Exec is used to diagnose most disk problems.  The assortment of commands for doing this are discussed in the Micro-Exec section.  Two microdiagnostic programs called DSKD and EXAM are also available.  However, these programs are only of interest to Ed McCreight--they are not intended for operation by novices.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Micro-Exec reports disk addresses in the following format:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">0FFPPPHHCCCS</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">where:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">FF = function (04 = read, 10 = write)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">PPP = pack number<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">HH = head number<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">CCC = cylinder number<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">S = sector number</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Basic test procedures are as follows:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">a)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Scanning a system pack for errors:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*Scan.Disk.Pack.For.Errors &lt;pack&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">This prints out both soft and hard errors, and provides no way of telling which errors are<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">hard.  To find only hard errors:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*Set.Disk.Error.Retry.Count 20<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">*Scan.Disk.Pack.For.Errors &lt;pack&gt;</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">b)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Writing and verifying a test pack:  (Note that pack 100 is reserved exclusively for this<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">purpose.)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*Mount.Auxiliary.Pack &lt;drive&gt;&lt;pack&gt;<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">*Write.Disk.Test.Pattern      (Writes and verifies test pattern)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">*Verify.Disk.Test.Pattern      (Verifies already written test pattern)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">*Dismount.Auxiliary.Pack      (when done)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">c)</span><span class="tab" val="24"></span><span style="font: 10pt serif">Observing disk data on a scope:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">*Loop.On.Specified.Disk.Page &lt;pack&gt;&lt;cylinder&gt;&lt;head&gt;&lt;sector&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">This repeatedly reads a single page, blinking the screen whenever an error is detected. <br></span><span class="tab" val="24"></span><span style="font: 10pt serif">Type DEL to terminate.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Following Tenex file system crashes, where fatal read errors in directories have occurred, the following general methods help to isolate the cause of the failure.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">1.  Turn on the "Read-Only" switches for all the system disk packs.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">2.  Use Micro-Exec S.D.P.F.E to find out which drives/packs/controllers are causing trouble.  If a particular pack suffers many failures, but the others seem ok, it is likely that the common controller is ok, but that something is wrong with either the unit controller or disk drive that is experiencing the failures.  If the failures are confined to a particular head, it is likely that that head is misaligned or broken.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">3.  If a pack produces many irrecoverable read errors on one drive, try mounting it on another drive and using S.D.P.F.E.  If it can be read ok on the other drive, then it is likely that there is some failure in the read electronics of the original unit controller or disk drive; otherwise, it is likely that there is a failure in the write electronics of the original controller/drive.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: justify">
+<span style="font: 10pt serif">4.  Try writing a test pattern on a test disk pack on a good drive (Pack 100 usually used for this purpose because it does not have any bad spots.).  Then mount the pack on the suspect drive and use S.D.P.F.E to see if it can be read correctly.  If it cannot be read correctly, you have further indication of a read electronics failure; if it can be read correctly, then you have further confirmation of a write electronics or head failure.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">5.  If you determine that a particular drive/controller combination is broken, you can determine whether it is the drive or controller by recabling the suspect controller to a working drive and the suspect drive to a working controller.  </span><span style="font: italic 10pt serif">(Refer to last two paragraphs in section</span><span style="font: 10pt serif"> </span><span style="font: bold 10pt serif">12.1 </span><span style="font: italic 10pt serif">for a discussion of what to do if the disk configuration is changed.)</span><span class="tab" val="24"></span><span style="font: 10pt serif"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: justify">
+<span style="font: bold 10pt serif">13.5.  TM</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">TM is a Maxc memory diagnostic that runs on the Alto.  It is used for basic debugging of the memory system, or when the memory is too sick to support Maxc programs such as Micro-Exec.  TM is documented separately in a memo entitled "The Maxc2 Memory Test Program and Other Folklore", by Larry Clark.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: justify">
+<span style="font: bold 10pt serif">13.6.  MemBash</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">MemBash is an Alto program that beats on the Alto/Maxc memory interface while monitoring the state of the Maxc processor.  It is intended to be run at the same time as a Maxc main memory micro-diagnostic (DGM or DGMR) to provoke problems that arise under conditions of memory contention.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The Maxc micro-diagnostic should first be loaded using Midas and the end-of-test breakpoint at 20 removed by typing "20;K".  Then exit Midas, start up MemBash, and issue the "Go" command.  The program runs until any key is struck.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If any error occurs (in the processor, memory, or Alto memory interface), the state of the memory system and all the memory interfaces is displayed.  The processor is then restarted at the beginning of the micro-diagnostic.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The Alto memory operations executed by MemBash are ordinarily sequential reads through the first 256K of memory.  The "Alto Operation" command may be used to select write or RMW operations or to specify that the Alto beat on a single memory location.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">MemBash may be exited by means of the "Quit" command.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: justify">
+<span style="font: bold 10pt serif">13.7.  SMIDiag</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">This program is a diagnostic for the Alto System Maintenance Interface (SMI).  Its operation is very simple, and one should step through the various available commands using the "?" feature.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">There are two main tests, one for the address register and the other for the data register.  In either test, one may use data patterns consisting of all zeroes, all ones, alternating ones and zeros, or random data.  </span><span style="font: italic 10pt serif">Important:</span><span style="font: 10pt serif">  Before running the address test with random data, it is necessary to disconnect the SMI cable to Maxc and install a terminator on the Alto interface.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: justify">
+<span style="font: bold 10pt serif">13.8.  AITest</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Alto-IMP interface test.</span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

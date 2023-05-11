@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>File [Indigo]&lt;Maxc>MSOURCES.DM!2>mtxtbuf.bcpl</title>
+  </head>
+  <body>
+    <pre>
+//mtxtbuf.bcplexternal [// MDISP	Blink// MRGN	PaintRgnLine; MarkRgnDispDirty// MMENU	DoTextAction; AbortingCFile; CFileStream// MCMD	CmdAltMenuP// Defined here	ClearInText; TxtBNewChar; InputTxtRgn; InputTextBuffer// Defined here for init only	TxtBufTV; TxtBufTVs; TxtBPaint; semiF; TxtBufClearFlag]static[ TxtBufClearFlag = false; InputTextBuffer; InputTxtRgn	semiF = false ]manifest[	bs = #10; del = #177;  Esc = #33]let ClearInText() be TxtBufClearFlag = trueand TxtBPaint(R) be PaintRgnLine(0, InputTextBuffer)and TxtBNewChar(Char) be[	if (Char ge $a) &amp; (Char le $z) then Char = Char &amp; not 40B	switchon Char into	[default:	if Char &gt; #176 then [ Blink(); return ]	if TxtBufClearFlag then	[ TxtBufClearFlag = false; InputTextBuffer!0 = 0 ]	test semiF	ifso	[ if CmdAltMenuP ne 0 then [ Blink(); return ]//Type ahead illegal during command execution beyond//point at which another action is initiated	  semiF = false; InputTextBuffer!0 = InputTextBuffer!0 -1	  DoTextAction(Char)	]	ifnot	[ if Char le $Z-100B then [ DoTextAction(Char); return ]	  if Char eq $; then semiF = true	  InputTextBuffer!0 = InputTextBuffer!0 + 1	  InputTextBuffer!(InputTextBuffer!0) = Char	]	endcase//Character erasecase bs:case $A-100B:	TxtBufClearFlag = false; semiF = false	if InputTextBuffer!0 &gt; 0 do InputTextBuffer!0 = InputTextBuffer!0 - 1	endcase	//Line erasecase $Q-100B:case del: semiF = false; InputTextBuffer!0 = 0; endcase//Non-control action characterscase $=:case $:: if CmdAltMenuP ne 0 then [ Blink(); return ]	DoTextAction(Char); return//Command file abort--currently only looked at by this routine which//is only called by DriverLoop(), so only aborts command file if//the command file is executing a "Go" or some other command that//calls DriverLoop()case $Z-100B: if CFileStream ne 0 then AbortingCFile = true//Always-active command abort charactercase $C-100B: DoTextAction($C-100B); return	]	MarkRgnDispDirty(InputTxtRgn)]</pre>
+  </body>
+</html>

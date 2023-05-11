@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-24Bravo.Dm!15>MaxcOps15.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 405pt; margin-left: 121pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 55<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">DMPLD</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">DMPLD</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: center">
+<span style="font: bold 10pt serif">15.  DMPLD</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: italic 10pt serif">Maxc1 only.</span><span style="font: 10pt serif">  (The "load" function of DMPLD is implemented by the AltIO "Load" command on Maxc2.)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">DMPLD is a Nova program</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span style="font: 10pt serif"> which can transfer stand-alone PDP-10 programs between Nova files and Maxc&rsquo;s memory.  At the present time, it is used only for loading PDP-10 diagnostics to assist in microcode debugging.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 20pt; text-align: left">
+<span style="font: bold 10pt serif">15.1.</span><span class="tab" val="24"></span><span style="font: bold 10pt serif">DMPLD Operation</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">To load a PDP-10 .SAV program when you are in Nova DOS type</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DMPLD&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">and answer the LOAD FROM FILE question.  Type rubout and try again if you make a mistake.  This zeroes the first 32K of main memory before loading.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">If you are in Midas, type</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">6,DMPLD;T</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Normally you will have to prepare locations 3, 4, and 7 before running the program.  To make these changes, proceed as follows:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">DMPLD&lt;cr&gt;</span><span style="font: 10pt serif"><br> </span><span class="tab" val="24"></span><span style="font: 10pt serif">LOAD FROM FILE:  </span><span style="font: 10pt serif; text-decoration: underline">AUXD&lt;cr&gt;</span><span style="font: 10pt serif"><br> </span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">NVIO/H&lt;cr&gt;</span><span style="font: 10pt serif"><br> </span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">3/</span><span style="font: 10pt serif"> 0   </span><span style="font: 10pt serif; text-decoration: underline">nnnnn&lt;lf&gt;</span><span style="font: 10pt serif"><br> </span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">4/</span><span style="font: 10pt serif"> 0   </span><span style="font: 10pt serif; text-decoration: underline">nnnnn&lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">7/</span><span style="font: 10pt serif"> 0   </span><span style="font: 10pt serif; text-decoration: underline">nnnnn&lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">M...OK.</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">DEB DMPLD&lt;cr&gt;</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">DMPLD%</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">DUMP$R</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">DUMP TO FILE:  </span><span style="font: 10pt serif; text-decoration: underline">AUXX&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The file will typically grow by a substantial amount when this is done because DMPLD does not compress out zeroes when dumping.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DELETE AUXD&lt;cr&gt;<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">RENAME AUXX AUXD&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: justify">
+<span style="font: 8pt serif">------------------------------<br></span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span style="font: 8pt serif">At present, the only way to create such a file on the Nova disk is to dump it from Maxc memory using DMPLD.  When Maxc was originally being bootstrapped, such files were created using a program called Mtape, which read Tenex "Mini-Dumper" tapes mounted on a 7-track drive which no longer exists.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If you want to dump a PDP-10 program you have created in core, you must exit back to DOS (by control-A or ;X to Midas).  Then dump the first 32K of main memory by typing</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">DEB DMPLD<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">DMPLD%<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">DUMP$R</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The program will then ask DUMP TO FILE: and you should type a file name.  If you make a mistake type rubout and try again.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 20pt; text-align: left">
+<span style="font: bold 10pt serif">15.2.</span><span class="tab" val="24"></span><span style="font: bold 10pt serif">Required Format for Standalone PDP-10 Programs</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">DMPLD requires the program to be a .SAV file which resides in the low 32K of main memory.  DMPLD currently zeroes the low 32K of core before loading the program.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">The interprocessor communication locations must be set up with pointers as follows:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">3/</span><span class="tab" val="24"></span><span style="font: 10pt serif">MTBS</span><span class="tab" val="24"></span><span style="font: 10pt serif">Magtape, IMP, MCA, etc. 300-word block (octal;  may grow later)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">4/</span><span class="tab" val="24"></span><span style="font: 10pt serif">DLSBS</span><span class="tab" val="24"></span><span style="font: 10pt serif">Data line scanner 104-word block<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">7/</span><span class="tab" val="24"></span><span style="font: 10pt serif">STADR</span><span class="tab" val="24"></span><span style="font: 10pt serif">Program starting address</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Note that these are absolute main memory locations in the "shadow" of the accumulators, so they must be initialized in one of three ways:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">(1)</span><span class="tab" val="24"></span><span style="font: 10pt serif">By hand from Midas or ODT<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">(2)</span><span class="tab" val="24"></span><span style="font: 10pt serif">By mapping page 0 to a different virtual address<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">(3)</span><span class="tab" val="24"></span><span style="font: 10pt serif">By using the JMC&rsquo;s for addressing absolute main memory addresses.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The program must perform an I/O reset (CONO APR,200000) </span><span style="font: italic 10pt serif">before</span><span style="font: 10pt serif"> carrying out input/output to any Nova related peripherals and </span><span style="font: italic 10pt serif">after</span><span style="font: 10pt serif"> initializing MTBS and DLSBS as described above.</span><span class="tab" val="24"></span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

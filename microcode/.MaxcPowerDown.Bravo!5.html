@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcPowerDown.Bravo!5</title>
+  </head>
+  <body>
+    <div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 530   Y: 10.5"   First Page: 0   Not-on-first-page<br>Columns: 1   Edge Margin: .6"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: center">
+<span style="font: 10pt serif">MAXC Room Power Down Procedure</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Odd Heading: Not-on-first-page</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: center">
+<span style="font: 10pt serif">Power Down</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 10pt serif">MAXC Room Power Down/Up Procedure</span></div>
+<div style="width: 445pt; margin-left: 84pt; margin-top: 24pt; text-align: left">
+<span style="font: bold 10pt sans-serif">by Ron Weaver</span></div>
+<div style="width: 445pt; margin-left: 84pt; margin-top: 24pt; text-align: left">
+<span style="font: bold 8pt sans-serif">OCTOBER 1980<br></span><span style="font: italic 8pt sans-serif">(Revised February 24, 1981)</span><span style="font: 8pt sans-serif"><br>Filed on [IVY]&lt;Maxc&gt;MaxcPowerDown.Bravo</span><span style="font: bold 8pt sans-serif"> </span><span style="font: 8pt sans-serif">and<br>               [IVY]&lt;Maxc&gt;MaxcPowerUp.Bravo</span></div>
+<div style="width: 445pt; margin-left: 84pt; margin-top: 54pt; text-align: justify">
+<span style="font: bold 10pt sans-serif">Abstract: </span><span style="font: 10pt sans-serif">This procedure itemizes the chronological steps necessary to systematically shut down the power in the Maxc room when a known power outage is scheduled.</span><span class="tab" val="24"></span></div>
+<div style="width: 445pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt sans-serif">EMERGENCY </span><span style="font: 10pt sans-serif">shutdown procedure (for fire or smoke) may be found in Appendix A.</span><span class="tab" val="24"></span></div>
+<div style="width: 445pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt sans-serif">A version of this procedure will appear in the </span><span style="font: italic 10pt sans-serif">Maxc Operations </span><span style="font: 10pt sans-serif">manual.</span><span class="tab" val="24"></span></div>
+<div style="width: 240pt; margin-left: 289pt; margin-top: 0pt; text-align: left">
+<span style="font: 18pt monospace">XEROX</span></div>
+<div style="width: 236pt; margin-left: 290pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 10pt sans-serif">PALO ALTO RESEARCH CENTER<br></span><span style="font: bold 8pt sans-serif">3333 Coyote Hill Road / Palo Alto / California 94304</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 12pt serif">1. Prior to Shutdown</span></div>
+<div style="width: 442pt; margin-left: 84pt; text-indent: 20pt; margin-top: 10pt; text-align: justify">
+<span style="font: 10pt serif">In order to give users adequate notice and to protect files on disk, Tenex should ordinarily be stopped in the following manner.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 10pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Forty-eight hours prior to the scheduled power outage send a message to the NCC Coordinator and the Arpanet liaison at SCI via their Arpanet mailboxes CONTROL@BBNC and Green@SCI-ICS stating the period the power will be off and that the IMP will be affected.  If the scheduled power outage is to take place in less than 48 hours then the NCC Coordinator may be reached direct by phone: (617) 661-0100.  The controller may wish you to call him just prior to taking the system down so you can set some switches on the IMP panel.</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br><br></span><span class="tab" val="24"></span><span style="font: 10pt serif">As long as possible before the scheduled downtime (preferably 24 hours or more), notify users by (optionally) putting a notice in the login message, setting the system downtime cell and recording a telephone message.  </span><span style="font: bold italic 10pt serif">Make sure you do these things on the correct Maxc system!</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 10pt; text-align: justify">
+<span style="font: 10pt serif">A.</span><span class="tab" val="24"></span><span style="font: 10pt serif">To put a notice in the login message, login as yourself and:</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 10pt; text-align: justify">
+<span style="font: 10pt serif">@</span><span style="font: 10pt serif; text-decoration: underline">SNDMSG&lt;cr&gt;</span><span style="font: 10pt serif"><br>To: </span><span style="font: 10pt serif; text-decoration: underline">SYSTEM&lt;cr&gt;</span><span style="font: 10pt serif"><br>cc:</span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span style="font: 10pt serif"><br>Subject: </span><span style="font: 10pt serif; text-decoration: underline">Scheduled downtime&lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Message:<br>(An appropriate message giving date, time, and reason)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br></span><span style="font: 10pt serif; text-decoration: underline">&uarr;Z</span><span style="font: 10pt serif"><br>Q,S,?,carriage-return:</span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span style="font: 10pt serif"><br>SYSTEM -- ok</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>@</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 10pt; text-align: justify">
+<span style="font: 10pt serif">B.</span><span class="tab" val="24"></span><span style="font: 10pt serif">To set the system downtime cell, you must be a wheel or a maintenance person:</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 10pt; text-align: justify">
+<span style="font: 10pt serif">@</span><span style="font: 10pt serif; text-decoration: underline">ENABLE&lt;cr&gt;</span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">(</span><span style="font: italic 10pt serif">only</span><span style="font: 10pt serif"> if you are a </span><span style="font: italic 10pt serif">wheel</span><span style="font: 10pt serif">)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>!</span><span style="font: 10pt serif; text-decoration: underline">HALT,&lt;cr&gt;</span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">(do </span><span style="font: italic 10pt serif">not</span><span style="font: 10pt serif"> omit the comma)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>[Superpassword:]</span><span style="font: 10pt serif; text-decoration: underline">GUESS&lt;cr&gt;</span><span style="font: 10pt serif"><br>@@</span><span style="font: 10pt serif; text-decoration: underline">AT mm/dd/yy/ hh:mm&lt;cr&gt;</span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">(date & time system going down)<br>@@</span><span style="font: 10pt serif; text-decoration: underline">UNTIL mm/dd/yy hh:mm&lt;cr&gt;</span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">(date & time coming back up)<br>@@</span><span style="font: 10pt serif; text-decoration: underline">DUE (TO REASON) reason</span><span style="font: 10pt serif"> (type ? for list)</span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>@@</span><span style="font: 10pt serif; text-decoration: underline">&lt;cr&gt;</span><span style="font: 10pt serif"><br>@</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 10pt; text-align: justify">
+<span style="font: 10pt serif">C.</span><span class="tab" val="24"></span><span style="font: 10pt serif">To record a telephone message, go to the recording telephone (next to the Imp in the back room) and follow the instructions posted there.  Make sure you specify Maxc1 or Maxc2 in the message.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 12pt serif">2.  System Shutdown</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: italic 10pt serif">General Methodology:</span><span class="tab" val="24"></span><span style="font: italic 10pt serif"><br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: italic 10pt serif">(1) Shut down software systems cleanly</span><span class="tab" val="24"></span><span style="font: italic 10pt serif"><br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: italic 10pt serif">(2) Safeguard rotary storage by spinning down all disk drives</span><span class="tab" val="24"></span><span style="font: italic 10pt serif"><br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: italic 10pt serif">(3) Get all other power off in the simplest manner possible so that restart can be accomplished<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: italic 10pt serif">    without an excessive current surge.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Maxc 1 & 2</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">The systems will automatically start notifying users of the impending downtime beginning one hour before it is to occur.  When the zero hour arrives, all jobs will be forcibly logged out except any job logged in on the Maxc controlling terminal, new logins will be prevented, and "Shutdown Complete" will type out on the Maxc console.  If there are now no jobs logged in, Tenex will shortly hit a BUGCHK (EDDT breakpoint) at SWHLT1, at which point Tenex is properly halted.</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">If there is a job logged in on the Maxc controlling terminal, it will be necesary to halt Tenex manually.  To do this (for which you must be a </span><span style="font: italic 10pt serif">wheel</span><span style="font: 10pt serif">):</span><span class="tab" val="24"></span></div>
+<div style="width: 336pt; margin-left: 190pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">@</span><span style="font: 10pt serif; text-decoration: underline">ENABLE&lt;cr&gt;</span><span style="font: 10pt serif"><br>!</span><span style="font: 10pt serif; text-decoration: underline">QUIT&lt;cr&gt;</span><span style="font: 10pt serif"><br>.</span><span style="font: 10pt serif; text-decoration: underline">H</span><span style="font: 10pt serif">alt Tenex</span><span style="font: 10pt serif; text-decoration: underline">.</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">Wait for the EDDT preakpoint at SWHLT1.  A message such as "$8B&gt;&gt;CHKADR BUGCHK/ SWHLT1" should be printed out.</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">Once Maxc1 and Maxc2 systems have halted you may proceed by stopping the rest of the systems in the Maxc room.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Ivy</span><span style="font: 10pt serif"><br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif"> From an Alto or DLS terminal:</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">Chat Ivy&lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Ena&lt;cr&gt;</span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">NOTE 1:</span><span class="tab" val="24"></span><span style="font: 10pt serif">You must be an Ivy </span><span style="font: italic 10pt serif">wheel</span><span style="font: 10pt serif">.</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Halt&lt;cr&gt;<br>Quit&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Twinkle</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">Ctrl-Shift-D</span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">(to turn on display)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Position cursor over "gateway" window, press down middle button, select "gateway" menu, let up button.<br>Press down middle button, select "quit" item, let up button.</span><span class="tab" val="24"></span><span style="font: 10pt serif"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Juniper</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">Shift Swat</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">DLS</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 6pt; text-align: justify">
+<span style="font: 10pt serif">Quit&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 12pt serif">3.  Removing System Power</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Maxc1 & Maxc2 Disk Drives</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Turn off Front switch first, then the switch in the rear.</span><span class="tab" val="24"></span></div>
+<div style="width: 336pt; margin-left: 190pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold italic 10pt serif">NOTE 2:</span><span class="tab" val="24"></span><span style="font: 8pt serif">An alternate procedure, (which is </span><span style="font: italic 8pt serif; text-decoration: underline">not</span><span style="font: 8pt serif"> advised due to the fact that some<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">circuit breakers may be in the off state prior to shutdown for some reason,<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">and the difficulty in correctly identifying all of them may lead to errors<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">when restoring power) instead of turning off the switch in the rear of each<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">disk drive, is to wait until everything else in this section has been done and<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">then throw all the circuit breakers on the Maxc, Maxc-A and Maxc-B Circuit<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">Breaker Panels, </span><span style="font: italic 8pt serif">noting carefully</span><span style="font: 8pt serif"> </span><span style="font: italic 8pt serif">the ones which are already off</span><span style="font: 8pt serif">.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Maxc1 NOVA</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">3301P&lt;cr&gt;<br>M.<br>Crtl A</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Power Off&lt;cr&gt;</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>R</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">NOTE 3:</span><span class="tab" val="24"></span><span style="font: 8pt serif">At present the processor power on Maxc1 cannot be turned ON or OFF</span><span class="tab" val="24"></span><span style="font: 8pt serif"><br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">under program control.  Throw the main breaker on the front pannel.</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Spin down NOVA disk</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Throw CKT breaker on front of Processor</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Throw CKT breakers on all power supplies (front).</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Turn off NOVA with key</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Maxc2</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Press middle blank button then type</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>3301P<br>M.<br>With the left mouse button successively select the menu items "Power Off" and</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>"Both".</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">NOTE 4:</span><span class="tab" val="24"></span><span style="font: 8pt serif">(The message "Processor locked on" will appear.  Just shut off the</span><span class="tab" val="24"></span><span style="font: 8pt serif"><br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">processor power supply manually.  The automatic power-off</span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 8pt serif">circuitry is missing.)</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Spin down ALTO disk</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Throw CKT breaker on front of Processor</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Throw CKT breakers on all power supplies (front).</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Pull 20 amp CKT breaker on panel above ALTO.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Stop Twinkle</span><span class="tab" val="24"></span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Spin down disks </span><span style="font: italic 10pt serif">(wait until they stop)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Pull out upper blower drawer and turn off switch inside top left.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Ivy</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Spin down disks (ALTO & six Trident disks)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Turn off ALTO power switch</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Turn off T80 & T300 disk power switches (in rear, or see </span><span style="font: bold italic 10pt serif">NOTE 2</span><span style="font: 10pt serif"> on page 3)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">DLS</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Spin down disk and </span><span style="font: italic 10pt serif">(after it stops) </span><span style="font: 10pt serif">pull 15 amp CKT breaker above.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Juniper</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Spin down disks (ALTOs & four Trident disks)</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Turn off ALTO power switch</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Turn off T80 & T300 disk power switches (in rear, or see </span><span style="font: bold italic 10pt serif">NOTE 2</span><span style="font: 10pt serif"> on page 3)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">IMP</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Don&rsquo;t worry about it unless NCC has asked you from an earlier phone call to call<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">just before removing power.</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>NCC likes to be called two days before scheduled shutdowns.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Dorados</span></div>
+<div style="width: 371pt; margin-left: 154pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">For each Dorado, if it is not already powered off </span><span style="font: italic 10pt serif">(green light 5 flash)</span><span style="font: 10pt serif"> find its</span><span class="tab" val="24"></span><span style="font: 10pt serif"> </span><span class="tab" val="24"></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">terminal and press boot button four times in quick succession to shut down.</span><span class="tab" val="24"></span><span style="font: 10pt serif"><br>Wait until green lights are flashing fives before throwing CKT breakers.</span><span class="tab" val="24"></span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

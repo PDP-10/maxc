@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-20Bravo.Dm!5>MaxcOps10.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 405pt; margin-left: 121pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 31<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Operating Tenex Microcode from Midas</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">Operaating Tenex Microcode from Midas</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: center">
+<span style="font: bold 10pt serif">10.  OPERATING TENEX MICROCODE FROM MIDAS</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: bold 10pt serif">A.</span><span class="tab" val="24"></span><span style="font: 10pt serif">Reset is accomplished by typing</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">21;G</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">to Midas.  The effect of this is to put the machine in monitor mode, to clear the interrupt system, the APR, the processor flags and the disk system.  However, Nova peripherals aren&rsquo;t affected, nor are the accumulators or PC affected.  If AltIO is called after RESET the processor will start at its starting address (pointed to by absolute location 7).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt serif">B.</span><span class="tab" val="24"></span><span style="font: 10pt serif">Starting at an arbitrary PDP-10 location </span><span style="font: 10pt serif; text-decoration: underline">n</span><span style="font: 10pt serif"> is accomplished by changing the contents of PC (which is on the display) to </span><span style="font: 10pt serif; text-decoration: underline">n</span><span style="font: 10pt serif"> and then typing</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">REMAPPC:</span><span class="tab" val="24"></span><span style="font: 10pt serif">(Midas types out the value </span><span style="font: 10pt serif; text-decoration: underline">m</span><span style="font: 10pt serif"> of REMAPPC)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">"AltIO", "Do-It"</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt serif">C.</span><span class="tab" val="24"></span><span style="font: 10pt serif">The PDP-10 accumulators are LM 0, LM 1, ..., LM 17 and can be examined and changed in the usual way from Midas.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt serif">D.</span><span class="tab" val="24"></span><span style="font: 10pt serif">The PDP-10 flags are in the left-most 13 bits of the F-register on the display.  If you change these from Midas, don&rsquo;t change the other 23 bits of F.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">These and other interesting bits of F are as follows:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold 10pt serif">Bit</span><span class="tab" val="24"></span><span style="font: bold 10pt serif">Definition</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">0</span><span class="tab" val="24"></span><span style="font: 10pt serif">Overflow<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Carry 0<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">2</span><span class="tab" val="24"></span><span style="font: 10pt serif">Carry 1<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">3</span><span class="tab" val="24"></span><span style="font: 10pt serif">Floating overflow<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">4</span><span class="tab" val="24"></span><span style="font: 10pt serif">Byte increment suppress<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">5</span><span class="tab" val="24"></span><span style="font: 10pt serif">User mode<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">6</span><span class="tab" val="24"></span><span style="font: 10pt serif">PARC mode (replaces PDP-10 user I/O mode)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">7</span><span class="tab" val="24"></span><span style="font: 10pt serif">Call from monitor (see JSYS, UMOVE, and Pager addendums to PDP-10 System<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">Reference Manual)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">8-10</span><span class="tab" val="24"></span><span style="font: 10pt serif">Machine mode (0=PDP-10, 1=Byte Lisp)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">11</span><span class="tab" val="24"></span><span style="font: 10pt serif">Floating underflow<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">12</span><span class="tab" val="24"></span><span style="font: 10pt serif">No divide<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">13</span><span class="tab" val="24"></span><span style="font: 10pt serif">Pushdown overflow<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">14</span><span class="tab" val="24"></span><span style="font: 10pt serif">XCT0<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">15</span><span class="tab" val="24"></span><span style="font: 10pt serif">XCT1<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">16</span><span class="tab" val="24"></span><span style="font: 10pt serif">XCT2<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">17</span><span class="tab" val="24"></span><span style="font: 10pt serif">XCT3<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">18</span><span class="tab" val="24"></span><span style="font: 10pt serif">Incompatible<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">19</span><span class="tab" val="24"></span><span style="font: 10pt serif">PI system is active<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">20</span><span class="tab" val="24"></span><span style="font: 10pt serif">PI cycle in progress<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">21</span><span class="tab" val="24"></span><span style="font: 10pt serif">MONALT - Temporary flag used by map loading microcode<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">22</span><span class="tab" val="24"></span><span style="font: 10pt serif">THIRDPT - Temporary flag used by map loading microcode<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">23</span><span class="tab" val="24"></span><span style="font: 10pt serif">Unused<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">24</span><span class="tab" val="24"></span><span style="font: 10pt serif">TTYBSY - console teletype output busy<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">25</span><span class="tab" val="24"></span><span style="font: 10pt serif">LOGF - enables main loop "LOGI", "BRKI", or "TRACEI" path<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">26</span><span class="tab" val="24"></span><span style="font: 10pt serif">PICYCLE<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">27</span><span class="tab" val="24"></span><span style="font: 10pt serif">CUM<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">28</span><span class="tab" val="24"></span><span style="font: 10pt serif">MICRO<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">29</span><span class="tab" val="24"></span><span style="font: 10pt serif">IENABLE<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">30</span><span class="tab" val="24"></span><span style="font: 10pt serif">Unused<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">31</span><span class="tab" val="24"></span><span style="font: 10pt serif">NOVA - Nova/Alto has left an interrupt request<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">32</span><span class="tab" val="24"></span><span style="font: 10pt serif">K<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">33</span><span class="tab" val="24"></span><span style="font: 10pt serif">J<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">34</span><span class="tab" val="24"></span><span style="font: 10pt serif">H<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">35</span><span class="tab" val="24"></span><span style="font: 10pt serif">G</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: bold 10pt serif">E.</span><span class="tab" val="24"></span><span style="font: 10pt serif">The interrupt system state is given by the following:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">PISTAT[29,35] have 1&rsquo;s when interrupts are in progress on the corresponding PI levels[1,7].  PISTAT[22,28] have 1&rsquo;s when interrupts are disabled on the corresponding PI levels.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">SM 600 to SM 643 contain in bits 12-35 the interrupt locations corresponding to devices 0 through 35.  The device assignments are in Maxc document 11.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">SM 644 to SM 652 are the interrupt-enabled bit tables for priority interrupt levels 1 through 7.  1&rsquo;s in each word indicate that the corresponding device (bit 0=device 35, bit 35=device 0) is enabled for interrupts at that level.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">MICINTS contains 1&rsquo;s for each device which has requested an interrupt.  (However, OVF, FOVF, and PDOVF are recomputed from F for each instruction, so their state in MICINTS isn&rsquo;t important.)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt serif">F.</span><span class="tab" val="24"></span><span style="font: 10pt serif">The microcode consistency "Checker" uses four variables CSUMD, CSUM0, CSUM1, and CSUM2 which contain checksums for all constants in the microprocessor&rsquo;s IM, DM, DM1, DM2, and SM memories.  CSUMD is an overall checksum (for detection of errors) while CSUM0-CSUM2 contain 18 6-bit bytes each of which is a checksum in a Hamming code.  The checker computes the address which is clobbered assuming only a single word is wrong.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">When newly assembled microcode is loaded for the first time on Maxc2, these checksums are computed and dumped automatically by "Midas Init".  Subsequent runnings of the TENLOAD, MEXECGO, and TENGO command files check the newly loaded system against these constants, and crash on errors.  Also the CHECK JMC does this (executed during Tenex initialization).</span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

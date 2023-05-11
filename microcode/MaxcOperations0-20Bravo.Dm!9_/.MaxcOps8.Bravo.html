@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-20Bravo.Dm!9>MaxcOps8.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 16<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">AltIO</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">AltIO</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 2pt; text-align: center">
+<span style="font: bold 10pt serif">8.  ALTIO</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif"><br>AltIO serves as an Alto Input-Output package which does all the input-output for Maxc except for the disks.  Specifically it does input-output for the Alto monitor, the Diablo printer, the Ethernet and the IMP (ARPA Network).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: bold 10pt serif">8.1.  Calling AltIO</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">AltIO may be called either from Midas or directly from the Alto Executive.  In Midas, selecting "AltIO" with the mouse causes a menu of AltIO subcommands to appear.  Selecting "Do-It" causes AltIO to be started with no options selected;  in this case, AltIO performs no initialization but simply resumes the microprocessor at its current location.  If other subcommands are selected before "Do-It", they modify the initial actions of AltIO in various ways.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">When AltIO is called directly from the Alto Executive, the same options may be specified by switches.  The general form of the AltIO command line is:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">AltIO/switches  parameter/switch  parameter/switch ...</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The switches immediately following "AltIO" correspond to Midas "AltIO" menu items in the following way:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt serif">Switch</span><span class="tab" val="24"></span><span style="font: bold 10pt serif">Menu Item</span><span class="tab" val="24"></span><span style="font: bold 10pt serif">Description</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">/B</span><span class="tab" val="24"></span><span style="font: 10pt serif">Boot-MExec</span><span class="tab" val="24"></span><span style="font: 10pt serif">Boot Micro-Exec into Maxc memory and start it.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">/H</span><span class="tab" val="24"></span><span style="font: 10pt serif">Dont-Go</span><span class="tab" val="24"></span><span style="font: 10pt serif">Leave Maxc halted rather than resuming it.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/P</span><span class="tab" val="24"></span><span style="font: 10pt serif">Protect</span><span class="tab" val="24"></span><span style="font: 10pt serif">Enter "protected" mode in AltIO.  This means that AltIO will<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">allow only those commands that examine (but do not write into)<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">memory and that do not change machine state.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">/R</span><span class="tab" val="24"></span><span style="font: 10pt serif">Reset-Memory</span><span class="tab" val="24"></span><span style="font: 10pt serif">Reset the memory system.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/S</span><span class="tab" val="24"></span><span style="font: 10pt serif">Start-Tenex</span><span class="tab" val="24"></span><span style="font: 10pt serif">Start Tenex, first booting Micro-Exec from disk as for /B and then<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">executing an automatic "Go" command.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The optional additional parameters may be specified only in the Executive command line;  there is no way to invoke them from Midas.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">filename/L</span><span class="tab" val="24"></span><span style="font: 10pt serif">Load a PDP-10 "save"-format file into Maxc memory (default extension .SAV).<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">Used for loading PDP-10 diagnostics when Micro-Exec won&rsquo;t work.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">n/U</span><span class="tab" val="24"></span><span style="font: 10pt serif">Use disk unit n rather than unit 0 in Boot-MExec and Start-Tenex commands,<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">where 0 corresponds to unit A and 7 to H.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: bold 10pt serif">8.2.  AltIO Commands</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">When AltIO is running, the Alto monitor is divided by black lines into three windows.  If Tenex is running, the top window continuously displays the addresses and contents of five interesting Maxc main memory variables.  The middle window belongs to a command processor for controlling AltIO itself.  The bottom window implements the Maxc controlling terminal used by Tenex and by stand-alone programs such as Micro-Exec and PDP-10 diagnostics.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Keyboard input is directed to whichever window currently contains the blinking cursor.  The middle and bottom unmarked keys on the right side of the keyboard may be used to direct input to the middle and bottom windows respectively.  Keyboard input is automatically switched to the bottom window when Maxc is started by commands such as "Boot" or "Go", and to the middle window when Maxc stops for any reason.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">The AltIO command processor has two heralds, a number sign (#) which indicates that only commands that examine memory are legal, and a colon (:) which indicates all commands are legal.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">AltIO commands consist of a single letter or other special character, optionally preceded by a numeric argument.  The argument is an octal number of up to 40 bits, depending on the command.  While typing an argument, one may use the editing characters control-A, control-W, and Delete to erase, respectively, a single character, a word, or the entire command.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Many AltIO commands request confirmation with "[confirm]".  The confirming character is a Return or period.  Most of AltIO&rsquo;s commands are intentionally the same as in NVIO;  the ones for which this is true are marked with a superscript "1".</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">n/</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current Maxc memory location to n; and print out the contents of that<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">location in the form:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">aa bbbbbb cccccc</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">where:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">aa (0 to 17) is the last 4 bits (i.e., the "tag" bits) of the 40-bit Maxc memory word,<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">it is not printed out if zero;</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">and</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">bbbbbb and cccccc are the left and right half 18 bits of the PDP-10 (Maxc) word.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">/</span><span class="tab" val="24"></span><span style="font: 10pt serif">Print out the current location.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">n&lt;cr&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Put the 40-bit number n into the current location.  The first 4 bits input are the last 4<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">bits of the memory.  Thus one can think of Maxc as a 36-bit machine (like the PDP-<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">10), right adjusted in a 40-bit field, rather than a 36-bit machine left adjusted in a 40-<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">bit word as is actually the case.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">This command is only legal after a command which prints out a Maxc memory<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">location.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">&lt;lf&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">(lf means linefeed).  Change the current location to the current location plus 1, and<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">print out the (new) current location.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">n&lt;lf&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Equivalent to n, &lt;carriage return&gt;, &lt;linefeed&gt;.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">&uarr;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current location to the current location minus 1, and print out the<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">(new) current location.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">n&uarr;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Equivalent to n, &lt;carriage return&gt;, &lt;up arrow&gt;.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">&lt;tab&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current location to the location pointed to by the current location.  Print<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">out its contents.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">B</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">B</span><span style="font: 10pt serif">oot Micro-Exec from Save Area 1 of physical disk unit A.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nB</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">B</span><span style="font: 10pt serif">oot Micro-Exec from Save Area 1 of physical disk unit n (0=A, 1=B, etc.)  The<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">parameter n is remembered for subsequent "B" commands without arguments.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">D</span><span class="tab" val="24"></span><span style="font: 10pt serif">Toggle on or off a switch causing typeout on the Maxc controlling terminal (the<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">bottom display window) to be copied to the Diablo printer.  This switch is normally<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">off, but turning it on is useful when debugging Tenex or doing memory maintenance.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">E</span><span class="tab" val="24"></span><span style="font: 10pt serif">Print out the current state of Maxc&rsquo;s PDP-10 emulator.  This includes the program<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">counter and all the accumulators.  This command may be issued only when Maxc is<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">stopped.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nG</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">G</span><span style="font: 10pt serif">o to Maxc location n.  Precisely: stop the Maxc microprocessor (cleanly if possible),<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">then tell it to begin executing PDP-10 instructions at Maxc main memory location n.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">G</span><span class="tab" val="24"></span><span style="font: 10pt serif">Go to the starting address of the currently loaded Maxc program, which is pointed to<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">by Maxc memory location 7.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">H</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">H</span><span style="font: 10pt serif">alt Maxc (cleanly if possible).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">L</span><span class="tab" val="24"></span><span style="font: 10pt serif">Prompt for a filename (default extension .SAV), then interpret that file as a PDP-10<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">"save"-format (not "ssave") file and load it into Maxc memory.  The program&rsquo;s<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">starting address is stored in location 7 so that a "Go" command without arguments<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">will start the program.  The file is expected to be in the 36-bit binary format defined<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">by FTP.  Retrieving a PDP-10 "save"-format file using the FTP program will cause<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">such a file to be created.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">M</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Halt Maxc (cleanly if possible) and return control to </span><span style="font: 10pt serif; text-decoration: underline">M</span><span style="font: 10pt serif">idas.  Midas is resumed in<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">whatever state it was in when control was last transferred to AltIO from Midas.  This<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">is true even if AltIO has been exited and other Alto programs run in the meantime.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nM</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Go to </span><span style="font: 10pt serif; text-decoration: underline">M</span><span style="font: 10pt serif">icroprocessor location n.  (If you use this command, you had better know<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">what you are doing.)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">P</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">P</span><span style="font: 10pt serif">rotect NVIO.  The herald becomes a number sign (#); only those commands that<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">examine memory (and other state varibles) are legal.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nP</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">If the number typed is the </span><span style="font: 10pt serif; text-decoration: underline">P</span><span style="font: 10pt serif">ass(word) number: AltIO becomes un</span><span style="font: 10pt serif; text-decoration: underline">p</span><span style="font: 10pt serif">rotected; the herald<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">becomes a colon (:) and all commands are legal.  Currently the pass(word) number is<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">3301; this should be easy to remember as it is the smallest number which is the sum<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">of two different cubes in two different ways.  (14</span><span style="font: 10pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif"> +1</span><span style="font: 10pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif"> =11</span><span style="font: 10pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif"> +12</span><span style="font: 10pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif">; octal of course.)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Q</span><span class="tab" val="24"></span><span style="font: 10pt serif">Quit:  return control to the Alto Executive, after first stopping Maxc if it is running.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">R</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">R</span><span style="font: 10pt serif">esume Maxc (the microprocessor is told to proceed).  If a reset was previously done<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">("21M" to ODT or "21;G" to Midas), PDP-10 interpretation will begin at the starting<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">address pointed to by main memory location 7;  otherwise, Maxc will resume from<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">where it was halted.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">S</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">S</span><span style="font: 10pt serif">tartup Tenex, booting Micro-Exec from disk unit A.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">nS</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">S</span><span style="font: 10pt serif">tartup Tenex, booting Micro-Exec from disk unit n (0=A, 1=B, etc.)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">W</span><span class="tab" val="24"></span><span style="font: 10pt serif">Print out the current state of Maxc (running, stopped, or at a micro breakpoint).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Z</span><span class="tab" val="24"></span><span style="font: 10pt serif">Zap Maxc memory:  reset and reconfigure the entire memory system.  Useful when<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">the memory has become hung up.  This command may be issued only while Maxc is<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">stopped.</span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>

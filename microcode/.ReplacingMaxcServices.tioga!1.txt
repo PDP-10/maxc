@@ -1,0 +1,147 @@
+
+Inter-Office Memorandum
+To        Distribution        Date    September 11, 1983
+From    Ed Taft        Location    PARC
+Subject    Replacing Maxc services    Organization    CSL
+XEROX
+    Filed on: [Indigo]<Maxc>ReplacingMaxcServices.tioga
+    Distribution: Birrell, Brown, Lampson, Ornstein, Schroeder, Taft, Taylor, Weaver
+        Bob has asked me to prepare a memo summarizing the issues surrounding our plans to shut down Maxc, and has designated this group of 
+        people to consider the matter.
+        A few weeks ago, I sent out a message requesting people to consider the impact that shutting down Maxc would have on their work. As 
+        I expected, there were many responses, some of which expressed very strongly-held opinions. I sent the message to AllPA^.pa 
+        (about 500 people) and received responses from about 60. I have saved all the messages and will be happy to make them 
+        available to anyone who is interested.
+        This memo enumerates all the Maxc services identified by the people who responded to my message, in descending order of (my 
+        perception of) importance. For each, I list some users or user groups who depend on the service, and then discuss possible 
+        ways of replacing it. Of course, the decision whether or not to replace a Maxc service (and who is to do the work) remains 
+        to be made.
+    Services we already plan to replace
+        Here is a summary of the Maxc services we (CSL) are already planning to replace.
+        Mail forwarding to and from the Arpanet will be provided using the Cedar TCP/IP implementation and mail header translator that were 
+        done by David Nichols, along with SMTP software that we hope Dan Craft will do this fall. I consider this task to be well 
+        under control, and I do not anticipate any difficulty in completing it between now and the end of the year.
+        Magnetic tape access will continue to be possible after Maxc is gone, since the tape drives are connected to an independent Alto 
+        server. Software for accessing the tape server exists in the form of a Cedar tape streams package done by Ed McCreight and 
+        an Alto/Mesa-based utility done for the VLSI group by Al Paeth (who has since left PARC). However, additional work will be 
+        required to implement all the tape formats and conversions provided by existing Maxc programs; and we don't have any 
+        immediate plans to do this work.
+        Being able to read the old Maxc archive tapes will be essential, and I am sure CSL people will need this capability. I believe 
+        writing a program to do this will be a simple task for any experienced Cedar programmer (using the tape streams package 
+        just mentioned). Note that I am talking only about a program to recover files from the existing tapes, and not a complete 
+        replacement for the Maxc archive system (archiving of new files, maintenance and querying of on-line archive directories, 
+        etc.) However, several users have suggested that we should keep the existing archive directories on-line anyway so as not 
+        to preclude some future facility for browsing through them.
+        Lyle Ramshaw already intends to produce a Cedar version of TEX (this was the original reason for his work on the Pascal-to-Cedar 
+        translator). He thinks this will require relatively little work, and can easily be done in the necessary time frame. But of 
+        course you have to have a machine that runs Cedar in order to use it, and Terry Winograd asserts that this would be 
+        terribly inconvenient.
+    Arpanet FTP and Telnet access
+        Many people state that they require continued access to the Arpanet for file transfers and terminal connections and that a 
+        mail-only connection is unacceptable. I agree, and I don't think we can seriously consider decommissioning Maxc until some 
+        replacement has been arranged; my intent in threatening to do so was to provoke more users into responding to my survey.
+        In CSL, Jim Horning makes extensive use of both FTP and Telnet access in his work with John Guttag. Leo Guibas and other members of 
+        the algorithms group regularly use the Arpanet to access Macsyma and to work on joint papers with outside members of the 
+        ARPA community. Dan Swinehart points out that FTP access to at least one PARC server from outside is required to support 
+        the university grant program.
+        Elsewhere in PARC, Bob Sproull requires Arpanet access to PARC for his work with ISL (e.g., Interpress). Terry Winograd frequently 
+        needs to shift files back and forth between Stanford and PARC and accesses Stanford computers while at PARC. A number of 
+        other consultants and part-time people express similar concerns. XSIS uses Maxc to distribute Interlisp-D releases to 
+        qualified ARPA sites.
+        More generally, people are concerned that failing to implement full-fledged FTP and Telnet access would make PARC a second-class 
+        Arpanet citizen and close off important avenues of collaberation with researchers at other ARPA sites. In addition to 
+        inconveniencing a number of people at PARC, this would be bad public relations for us among the ARPA community.
+        What do we do? I see four plausible alternatives at the moment:
+            1. Implement FTP and Telnet ourselves, in Cedar, using the existing TCP/IP software as a base (i.e., provide a protocol translation 
+            gateway for the FTP and Telnet application protocols, much as we intend to do for electronic mail). This is technically 
+            straightforward but a substantial amount of work; FTP in particular is quite a complicated protocol. Furthermore, the 
+            server providing these gateway capabilities would also have to implement authentication, access control, and logging in 
+            order to maintain adequate information security. Finally, providing what amounts to a limited time-sharing service 
+            would undoubtedly stress the TCP/IP software and the underlying Cedar system more severely than the mail forwarding 
+            function, and technical problems would likely surface. My guess is that it would take 3 to 4 months for an experienced 
+            Cedar programmer to get this completely working.
+            2. Same as (1), but get someone outside CSL/ISL/IDL to do the work. Since Cedar is presently not available outside our community, 
+            this means doing it in some other language, which in turn means that they need to implement the TCP/IP software as well 
+            as the application gateway services on top.
+            3. Connect GSL's VAX to the Arpanet and install TCP/IP software available from any of several sources. There is a company that 
+            sells a complete VMS TCP/IP package (including FTP and Telnet) for $19K, but of questionable quality according to 
+            Forest Baskett. Or we could run the Berkeley Unix TCP/IP software on top of Eunice, which simulates Unix on top of VMS 
+            and which we already have. We would also need to beef up the VMS Pup software, which is somewhat weak at present. Bob 
+            Bachrach seems receptive to this idea.
+            4. Acquire another VAX running Berkeley Unix, Berkeley TCP/IP software, and (presumably) Stanford Pup code. Larry Masinter suggests 
+            that this might fit in with the plans now being made by Brian Smith and Terry Winograd to set up some sort of 
+            consortium among PARC, Stanford, and SRI (?I'm very sketchy on the facts of this; does anyone know more?) A minimum 
+            configuration VAX 750 costs about $50K, and Xerox already has a Unix license for the software.
+        Each alternative has advantages and disadvantages. The advantage of (1) is that we get to control it and decide how it's to be 
+        done, but the disadvantage that we have to do all the work. Approach (2)'s advantages and disadvantages are the reverse of 
+        (1)'s, but I don't really have any way of evaluating the proposal since everything about it is hypothetical. The advantage 
+        of (3) is that we use existing hardware and available software, but the disadvantages that we have to do a fair amount of 
+        work (since GSL has no in-house VAX software support people) and GSL ends up calling the shots. The advantage of (4) is 
+        that we might be able to get some other group to do all the work, but the disadvantage that it would probably take a long 
+        time since this consortium (or whatever it is) is still in the preliminary planning stages.
+    Tape archiving
+        The continuing ability to archive new files to tape likewise appears to be essential. The only alternatives are a vast increase in 
+        the capacity of our file servers, which is costly and wasteful and of course solves the problem only for a limited time, or 
+        some sort of manual disk archiving arrangement such as is used in SDD, which is cumbersome and a burden on operational 
+        personnel.
+        For example, Jim Horning estimates that he has 5 to 10 times as much (useful) data archived on tape as kept on-line. Stu Card 
+        generates enormous amounts of experimental data; the data he has already archived from Maxc would never fit on an existing 
+        file server. All the CSL blue-and-white reports and a number of other reports and papers get archived so as to be available 
+        for reprinting in the indefinite future. Terry Winograd has the source files for an entire book archived; he has nowhere 
+        near enough room to keep all the files he needs on-line, despite having an unusually large disk allocation.
+        Several people assert that we should be archiving more than we already do. In particular, systems that are distributed outside PARC 
+        or outside Xerox (e.g, Mesa, Interlisp-D, Smalltalk-80) should have snapshots taken of every formal release. Keeping a 
+        machine-readable record of a project can be useful for historical purposes, especially if Xerox is ever involved in a 
+        software related lawsuit. So if anything, we should make archiving more convenient than it is now rather than less so.
+        The following potential solutions have emerged:
+            1. Implement an archive server ourselves, in Cedar, using McCreight's tape streams package for actually accessing the tape drives. 
+            The amount of work required depends on our level of ambition. The minimum facility, suggested by Butler, would interact 
+            with users via the message system for both archival and retrieval requests. The server would keep no permanent on-line 
+            directory of archived files; instead, users would be responsible for keeping track of files. The server would be 
+            self-contained and not require integration with file servers (IFS or Alpine). My guess is that an experienced Cedar 
+            programmer could implement this minimum solution in a month.
+            2. Same as (1), but get someone outside CSL/ISL/IDL to do the work. Since Cedar is presently not available outside our community, 
+            this means implementing an equivalent of the Cedar tape streams package; but the protocol is simple and that task 
+            shouldn't be very hard.
+            3. Use the GSL VAX's archive system, in much the same way as Maxc's archive system is used now. That is, users would be assigned 
+            accounts on the VAX and would manually store files for archiving using FTP. This approach is questionable since the VAX 
+            VMS archive system is quite primitive and apparently doesn't work very reliably, according to Ron Weaver.
+            4. If a VAX running Berkeley Unix were installed to support Arpanet access, with suitable hardware additions it could also be used 
+            for tape archiving. The Unix archive system is reputed to be in somewhat better shape than VMS's, but I don't have 
+            enough information on which to make an informed judgement.
+    Mail access from home terminals
+        A number of users keep their mailboxes on Maxc and access them (using MSG or other programs) from home terminals or from other 
+        Arpanet sites. They feel that the capabilities and performance of the Lily (Ernestine) servers are inadequate. Absence of 
+        filing facilities and of private distribution lists are most frequently mentioned deficiencies.
+        A substantial increase in Lily usage might be an operational headache for the Palo Alto Grapevine administrators as well, since the 
+        load on Grapevine servers would be increased. Also, replicating the Lily service would require minor changes to the DLS 
+        software to implement the Grapevine resource location algorithm.
+    Miscellaneous
+        People have mentioned various PDP-10 programs that they occasionally run on Maxc, such as Pascal and Snobol. These computing 
+        services could be obtained from other PDP-10 sites on the Arpanet, presuming we provided the necessary FTP and Telnet 
+        access.
+        There is a data analysis system called IDL that was implemented at PARC in Lisp and presently runs only on Maxc. Stu Card and Bob 
+        Ladner state that they depend on it. I do not know why it can't be run on Interlisp-D or how much work would be required to 
+        convert it.
+        Peter Deutsch asserts that Interlisp-D is not an adequate substitute for Lisp on Maxc because it isn't available from home 
+        terminals.
+        Anne Chiang says that she and others who use Icarus require a couple of Maxc programs called PGT and EBCDIC (written in Sail) for 
+        writing tapes used to generate IC masks. She has no programmer support for implementing a replacement.
+        The Multi-project chip (MPC) system receives submissions by reading from a Maxc mailbox. Some programming would be required to 
+        change it to read from Grapevine mailboxes instead. MPC also occasionally uses the EBCDIC program to receive projects 
+        submitted in tape form.
+        In addition to using Maxc to distribute 1100 software to ARPA sites, XSIS writes Tops-20 distribution tapes from Maxc. 
+        (Incidentally, Marty Raim suggested that the 1100 program might contribute some programmer cycles to help implement the 
+        services on which the program depends.)
+        Terry Winograd says that a Maxc program called Hardcopy is the only Bravo-to-plain-text conversion program known to him, and he 
+        uses it a lot.
+        Several secretaries (including Subhana) say that they use some Maxc program for preparing sorted address labels. I do not know 
+        anything about this program.
+    Summary
+        The first two Maxc services described, Arpanet FTP and Telnet access and tape archiving, are required by many people. In my 
+        opinion, adequate replacements must be available before we can decommission Maxc.
+        The other services are either required by only a few people or are matters of convenience rather than necessity. It is conceivable 
+        that we could discontinue them without replacement. But it is important that we do so in such a way as not to incur 
+        unfavorable public relations consequences for CSL.
+        We should find out more about this Xerox/Stanford/SRI consortium (or whatever it is), since it is conceivably a source of both 
+        machine capacity and programmer resources.

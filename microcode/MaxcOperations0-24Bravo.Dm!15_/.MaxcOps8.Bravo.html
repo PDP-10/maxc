@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>[Indigo]&lt;Maxc>MaxcOperations0-24Bravo.Dm!15>MaxcOps8.Bravo</title>
+  </head>
+  <body>
+    <div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Page Numbers: Yes   X: 527   Y: 10.5" First Page: 20<br>Columns: 1   Edge Margin: .4"   Between Columns: .4"<br>Margins:   Top: 1.3"   Bottom: 1"<br>Line Numbers: No   Modulus: 5   Page-relative<br>Odd Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: bold 12pt serif">Maxc Operations</span><span class="tab" val="24"></span><span style="font: bold italic 10pt serif">NVIO and ODT</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span style="font: 10pt serif">Even Heading:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 0pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: bold italic 10pt serif">NVIO and ODT</span><span class="tab" val="24"></span><span style="font: bold 12pt serif">Maxc Operations</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 2pt; text-align: center">
+<span style="font: bold 10pt serif">8.  NVIO AND ODT</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: italic 10pt serif">Maxc1 only.</span><span style="font: 10pt serif">  NVIO is a Nova Input-Output package which does all the input-output for Maxc except for the disks.  Specifically, it does input-output for the data line scanner, the IMP (ARPA Network), the MCA (Multiprocessor Communications Adaptor), the Ethernet, and the tape units.  It also has an octal debugger called ODT (Octal Debugging Tool) which will allow the user to change memory locations in Maxc and the Nova, and perform other control functions.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">8.1.</span><span class="tab" val="24"></span><span style="font: bold 10pt serif">Calling NVIO</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">NVIO can be called from Midas with the command:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">6,NVIO;T</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span style="font: 10pt serif">or:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 3pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">!NVIO.SV/a/b ... &lt;unitno&gt;&lt;cr&gt;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">where /a/b etc. represents switches (of the usual Nova DOS type); and &lt;unitno&gt;, if it exists, is of the form &rsquo;Un&rsquo; for n=0 to 7.  The NVIO startup procedure is determined by the setting of these switches, the function of each of which is now defined -- in the order in which they are tested to avoid any ambiguity caused by multiple switch settings.  Most of the switches have an analogous ODT command with the same (letter) name.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/R</span><span class="tab" val="24"></span><span style="font: 10pt serif">Reset the Maxc memory system.  This is a fairly catastrophic operation and should be<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">performed only if the memory is hung up.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/B</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">B</span><span style="font: 10pt serif">oot Micro-Exec from Save Area 1 of disk unit n (from the &rsquo;Un&rsquo; argument), where<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">0=A, 1=B, ... 7=H. Unit A is used if no unit is specified.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/S</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">S</span><span style="font: 10pt serif">tart Tenex, first booting Micro-Exec from disk as for /B and then executing an<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">automatic "Go" command.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/E</span><span class="tab" val="24"></span><span style="font: 10pt serif">Bring in the Maxc Micro-</span><span style="font: 10pt serif; text-decoration: underline">E</span><span style="font: 10pt serif">xec from tape unit number n (from Un) or from unit 0<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">if </span><span class="tab" val="24"></span><span style="font: 10pt serif">no unit is specified.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/P</span><span class="tab" val="24"></span><span style="font: 10pt serif">Enter </span><span style="font: 10pt serif; text-decoration: underline">P</span><span style="font: 10pt serif">rotect mode in ODT.  This means that ODT will allow only those commands<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">that examine (but do not write into) memory and that do not change machine state.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">/D</span><span class="tab" val="24"></span><span style="font: 10pt serif">Enter the Nova </span><span style="font: 10pt serif; text-decoration: underline">D</span><span style="font: 10pt serif">ebugger.  ODT Control may be resumed by typing $P.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">/H</span><span class="tab" val="24"></span><span style="font: 10pt serif">Normally NVIO now sends a "proceed" to Maxc which was probably halted before<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">NVIO was called.  This auto-proceed can be suppressed by using the /H switch.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">/W</span><span class="tab" val="24"></span><span style="font: 10pt serif">NVIO will </span><span style="font: 10pt serif; text-decoration: underline">W</span><span style="font: 10pt serif">ait for an IORESET before proceeding.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Normally, NVIO is initially started up with the /B or /S switch set, in order to load Micro-Exec and possibly start Tenex.  When it is desired to start NVIO without resuming Maxc (e.g. to examine Maxc main memory or start at an alternate address), the /H switch should be used.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">8.2.</span><span class="tab" val="24"></span><span style="font: bold 10pt serif">ODT Commands</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">When NVIO is functioning, ODT (Octal Debugging Tool) is its highest priority process (only interrupts take precedence).  It has two heralds, a number sign (#) which indicates that only commands that examine memory are legal, and a colon (:) which indicates all commands are legal.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">If Tenex is running and no ODT commands have been typed for ten seconds, NVIO will continuously display and update the addresses and contents of five Maxc main memory variables.  If you start typing on the Infoton, NVIO will stop doing this and will print the appropriate herald followed by your typein on the next line.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">ODT commands consist of a single letter or other special character, optionally preceded by a numeric argument.  The argument is an octal number of 16 or 40 bits (depending on the command) or an expression made up of such numbers and the operators "+" and "-".  "." stands for the current (most recently displayed) memory address.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Many NVIO commands request confirmation with "...OK".  The confirming character is a period.  The NVIO commands marked with a superscript "1" are valid and have the same meaning in AltIO.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">n] </span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current machine to the Nova; change the current memory location to n;<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">and print out the contents of that location.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">n[ </span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current machine to Maxc; change the current memory location to n; and<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">print out the contents of that location in the format:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: left">
+<span style="font: 10pt serif"> </span><span class="tab" val="24"></span><span style="font: 10pt serif">aa bbbbbb cccccc</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">where:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">aa (0 to 17) is the last 4 bits (i.e., the "tag" bits) of the 40-bit Maxc memory word, it is </span><span class="tab" val="24"></span><span style="font: 10pt serif">not printed out if zero;</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">and</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 4pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">bbbbbb and cccccc are the left and right half 18 bits of the PDP-10 (Maxc) word.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">n/</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span style="font: 10pt serif"> </span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current memory location to n; and print out the contents of that location.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">/ </span><span class="tab" val="24"></span><span style="font: 10pt serif">Print out the current location.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">n&lt;cr&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Put n into the current location. If the current machine is the Nova, a 16-bit number is<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">permissible. If the current machine is Maxc, a 40-bit number is permissible.  The first<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">4 bits input are the last 4 bits of the memory.  Thus one can think of Maxc as a 36-bit<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">machine (like the PDP-10), right adjusted in a 40-bit field, rather than a 36-bit<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">machine left adjusted in a 40-bit word as is actually the case.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">This command is only legal after a command which prints out a Maxc or Nova location.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">&lt;lf&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">(lf means linefeed).  Change the current location to the current location plus 1, and<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">print </span><span class="tab" val="24"></span><span style="font: 10pt serif">out the (new) current location.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">n&lt;lf&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Equivalent to n, &lt;carriage return&gt;, &lt;linefeed&gt;.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">&uarr;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current location to the current location minus 1, and print out the (new)<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">current location.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">n&uarr;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Equivalent to n, &lt;carriage return&gt;, &lt;up arrow&gt;.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">&lt;tab&gt;</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Change the current location to the location pointed to by the current location.  Print<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">out its contents.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">B</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">B</span><span style="font: 10pt serif">oot Micro-Exec from Save Area 1 of physical disk unit A.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nB</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">B</span><span style="font: 10pt serif">oot Micro-Exec from Save Area 1 of physical disk unit n (0=A, 1=B, etc.)  The<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">parameter n is remembered for subsequent "B" commands without arguments.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">D </span><span class="tab" val="24"></span><span style="font: 10pt serif">Go to the Nova </span><span style="font: 10pt serif; text-decoration: underline">D</span><span style="font: 10pt serif">ebugger.  $P will resume ODT.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">E </span><span class="tab" val="24"></span><span style="font: 10pt serif">Startup the Maxc Micro-</span><span style="font: 10pt serif; text-decoration: underline">E</span><span style="font: 10pt serif">xec, loading from Tape Unit 0.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">nE</span><span class="tab" val="24"></span><span style="font: 10pt serif">Startup the Maxc Micro-</span><span style="font: 10pt serif; text-decoration: underline">E</span><span style="font: 10pt serif">xec, loading from Tape Unit n.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nG</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">G</span><span style="font: 10pt serif">o to Maxc location n.  Precisely: stop the Maxc microprocessor (cleanly if possible),<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">then tell it to begin executing PDP-10 instructions at Maxc main memory location n.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">H</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">H</span><span style="font: 10pt serif">alt Maxc (cleanly if possible).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">I</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">I</span><span style="font: 10pt serif">nitialize NVIO.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">nI</span><span class="tab" val="24"></span><span style="font: 10pt serif">Execute initialization routine n:<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">0</span><span class="tab" val="24"></span><span style="font: 10pt serif">Initialize all devices<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Initialize DLS<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">2</span><span class="tab" val="24"></span><span style="font: 10pt serif">Reset memory system</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">M</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Halt Maxc (cleanly if possible) and return control to </span><span style="font: 10pt serif; text-decoration: underline">M</span><span style="font: 10pt serif">idas.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nM</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">Go to </span><span style="font: 10pt serif; text-decoration: underline">M</span><span style="font: 10pt serif">icroprocessor location n.  (If you use this command, you had better know<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">what you are doing.)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">P</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">P</span><span style="font: 10pt serif">rotect NVIO.  The herald becomes a number sign (#); only those commands that<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">examine bmemory (and other state varibles) are legal.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nP</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif">If the number typed is the </span><span style="font: 10pt serif; text-decoration: underline">P</span><span style="font: 10pt serif">ass(word) number: ODT becomes un</span><span style="font: 10pt serif; text-decoration: underline">p</span><span style="font: 10pt serif">rotected; the herald<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">becomes a colon (:) and all commands are legal.  Currently the pass(word) number is<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">3301; this should be easy to remember as it is the smallest number which is the sum<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">of two different cubes in two different ways.  (14</span><span style="font: 8pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif"> + 1</span><span style="font: 8pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif"> = 11</span><span style="font: 8pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif"> + 12</span><span style="font: 8pt serif; vertical-align: 4pt">3</span><span style="font: 10pt serif">; octal of<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">course.)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">Q</span><span class="tab" val="24"></span><span style="font: 10pt serif">Print out the current state of Maxc (running, stopped, or at a micro breakpoint).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">R</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">R</span><span style="font: 10pt serif">esume Maxc (the microprocessor is told to proceed).  If a reset was previously done<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">("21M" to ODT or "21;G" to Midas), PDP-10 interpretation will begin at the starting<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">address pointed to by main memory location 7;  otherwise, Maxc will resume from<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">where it was halted.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nR</span><span class="tab" val="24"></span><span style="font: 10pt serif">If n is zero, disable Maxc main memory error recovery;  NVIO will halt instantly on<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">any fatal Maxc error.  If n is nonzero, reenable error recovery.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">S</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">S</span><span style="font: 10pt serif">tartup Tenex, booting Micro-Exec from disk unit A.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">nS</span><span style="font: 8pt serif; vertical-align: 4pt">1</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">S</span><span style="font: 10pt serif">tartup Tenex, booting Micro-Exec from disk unit n (0=A, 1=B, etc.)</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">nT</span><span class="tab" val="24"></span><span style="font: 10pt serif">Begin </span><span style="font: 10pt serif; text-decoration: underline">T</span><span style="font: 10pt serif">esting output on DLS line n.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">nU</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">U</span><span style="font: 10pt serif">nhang Nova device number n by simulating a completion interrupt.  If you use this<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">command, you had better know what you are doing.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">nZ</span><span class="tab" val="24"></span><span style="font: 10pt serif">Stop testing DLS line n.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">8.3.  Nova Locations of Interest</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">50:</span><span class="tab" val="24"></span><span style="font: 10pt serif">Version number.  This number is incremented by 100 for each assembly of NVIO.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">51:</span><span class="tab" val="24"></span><span style="font: 10pt serif">Normally this location has a -1.  If it has the number n in it then NVIO will PUNT if<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">it attempts to read or write into Maxc physical page n.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">52:</span><span class="tab" val="24"></span><span style="font: 10pt serif">The pass(word) number.  Currently this is set to 3301 as explained under the ODT<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">command P.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">53:</span><span class="tab" val="24"></span><span style="font: 10pt serif">Date of most recent NVIO assembly, in the form MMDDYY, where MM and DD are<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">octal but YY is decimal (at least until 1978).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">55:</span><span class="tab" val="24"></span><span style="font: 10pt serif">Save area to boot Micro-Exec from (usually 1).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">56:</span><span class="tab" val="24"></span><span style="font: 10pt serif">Default disk unit to boot Micro-Exec from (initially 0, but changed by arguments to B<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">and S commands).</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">57:</span><span class="tab" val="24"></span><span style="font: 10pt serif">Correction for known clock error, in seconds per day.  This number is positive if the<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">clock is known to be fast, negative if slow.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">The following symbolic locations are of interest:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">RTN:</span><span class="tab" val="24"></span><span style="font: 10pt serif">location of code to return to Midas.  The Nova debugger<br>M:</span><span class="tab" val="24"></span><span style="font: 10pt serif">commands RTN$R or M$R are equivalent to the ODT command M.</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">BREAK:</span><span class="tab" val="24"></span><span style="font: 10pt serif">location to goto to make a save file of the current version of NVIO.  After BREAK$R<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">is executed, control will go to the Nova Exec and the command:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif"> </span><span class="tab" val="24"></span><span style="font: 10pt serif">SAVE name</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">should be executed to save NVIO on the specified file.  This is normally done after<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">NVIO is patched by the following sequence:</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif"> </span><span class="tab" val="24"></span><span style="font: 10pt serif">DEB NVIO<br> </span><span class="tab" val="24"></span><span style="font: 10pt serif">make patches<br> </span><span class="tab" val="24"></span><span style="font: 10pt serif">BREAK$R<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">R<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">SAVE NVIO</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span class="tab" val="24"></span><span style="font: 10pt serif">If control goes to a debugger breakpoint after the BREAK$R is executed, this means<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">that there is no disk space available.  Exit via RTN$R; make disk space; and repeat<br></span><span class="tab" val="24"></span><span style="font: 10pt serif">patches.  (Sorry!)</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 36pt; text-align: left">
+<span style="font: bold 10pt serif">8.4.  NVIO Punts</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">For each PUNT, the location at which the PUNT occurred is put into Nova register 3, and information particular to each PUNT is sometimes stored in register 0.  Maxc is then halted (cleanly if possible) and "NVIO Punt" is printed on the Nova console.</span><span class="tab" val="24"></span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: justify">
+<span style="font: 10pt serif">Accumulators 0, 1, 2, and 3 are stored at PUNT0, PUNT1, PUNT2, and XPUNT respectively, and may be examined by going into the DOS debugger with the "D" command.  After resuming NVIO with "$P", it is necessary to restart Tenex in one of the following (increasingly drastic) ways:</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">1)</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">R</span><span style="font: 10pt serif">...OK</span><span style="font: 10pt serif; text-decoration: underline">.</span><span class="tab" val="24"></span><span style="font: 10pt serif">(Simply tells Maxc to proceed).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">2)</span><span class="tab" val="24"></span><span style="font: 10pt serif">:</span><span style="font: 10pt serif; text-decoration: underline">21M</span><span style="font: 10pt serif">...OK</span><span style="font: 10pt serif; text-decoration: underline">.</span><span class="tab" val="24"></span><span style="font: 10pt serif">(Resets Maxc microprocessor).<br></span><span class="tab" val="24"></span><span class="tab" val="24"></span><span style="font: 10pt serif">:</span><span style="font: 10pt serif; text-decoration: underline">140G</span><span style="font: 10pt serif">...OK</span><span style="font: 10pt serif; text-decoration: underline">.</span><span class="tab" val="24"></span><span style="font: 10pt serif">(Attempts "soft" restart of Tenex).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span class="tab" val="24"></span><span style="font: 10pt serif">3)</span><span class="tab" val="24"></span><span style="font: 10pt serif; text-decoration: underline">S</span><span style="font: 10pt serif">...OK</span><span style="font: 10pt serif; text-decoration: underline">.</span><span class="tab" val="24"></span><span style="font: 10pt serif">(Reloads and restarts Tenex).</span></div>
+<div style="width: 442pt; margin-left: 84pt; margin-top: 12pt; text-align: left">
+<span style="font: 10pt serif">More detailed information on handling NVIO punts and Nova crashes may be found in Section 2.</span></div>
+<script>function do_tabs() { // unit = px
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; ++i) {
+    var span = tabs[i];
+    var val = span.getAttribute("val");
+    if (val == null) console.log("Couldn't get val");
+    var rect = span.getBoundingClientRect();
+    var tabstop;
+    if (val > 0) tabstop = Math.ceil(rect.left / val) * val;
+    else tabstop = -val;
+    console.log("do_tabs", val, tabstop)
+    if (tabstop > 0) {
+      var width = tabstop - rect.left;
+      span.style.display = "inline-block";
+      span.style.width = width + "px";
+    }
+  }
+}
+do_tabs();
+</script>
+  </body>
+</html>
